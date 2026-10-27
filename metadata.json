@@ -1,0 +1,6 @@
+{
+  "name": "KDE Connect: Remote Browser & Device Chat",
+  "description": "Integration suite for KDE Connect Android featuring remote filesystem browsing, persistent device-specific chat, notes bulletin board, protocol analysis, and mergeable Kotlin code based on FileApex.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
