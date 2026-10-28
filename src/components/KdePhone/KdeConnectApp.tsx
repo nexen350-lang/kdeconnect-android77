@@ -11,6 +11,7 @@ import { BulletinChatView } from './BulletinChatView';
 import { FindPhoneModal } from './FindPhoneModal';
 import { SendFileDialog } from './SendFileDialog';
 import { SettingsDrawer } from './SettingsDrawer';
+import { MultimediaControlModal } from './MultimediaControlModal';
 import { DEVICE_LOCAL_S24, DEVICE_REMOTE_PIXEL8 } from '../../data/androidFileSystems';
 import { AndroidDevice } from '../../types/kdeConnectApp';
 import { 
@@ -32,6 +33,7 @@ export const KdeConnectApp: React.FC = () => {
   const [showFindPhone, setShowFindPhone] = useState(false);
   const [showSendFile, setShowSendFile] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showMediaModal, setShowMediaModal] = useState(false);
   const [isPhoneFrame, setIsPhoneFrame] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimerRef = React.useRef<any>(null);
@@ -70,7 +72,7 @@ export const KdeConnectApp: React.FC = () => {
   };
 
   const handleMediaControl = () => {
-    showToast(`🎵 تم إرسال أمر تشغيل/إيقاف الوسائط إلى ${deviceB.model}`);
+    setShowMediaModal(true);
   };
 
   return (
@@ -219,6 +221,14 @@ export const KdeConnectApp: React.FC = () => {
           currentDevice={deviceA}
           targetDevice={deviceB}
           onClose={() => setShowSettings(false)}
+          onNotify={showToast}
+        />
+      )}
+
+      {showMediaModal && (
+        <MultimediaControlModal
+          targetDevice={deviceB}
+          onClose={() => setShowMediaModal(false)}
           onNotify={showToast}
         />
       )}

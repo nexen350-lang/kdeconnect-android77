@@ -154,10 +154,36 @@ export const DevicePluginGrid: React.FC<DevicePluginGridProps> = ({
       </div>
 
       <div className="grid grid-cols-2 gap-3">
+        {/* Multimedia Control (MPRIS) */}
+        <button
+          onClick={onOpenMedia}
+          className="col-span-2 bg-gradient-to-l from-rose-950/40 via-slate-900 to-slate-900 hover:from-rose-900/50 border border-rose-500/30 hover:border-rose-400/60 rounded-2xl p-3.5 text-right transition-all flex items-center justify-between group shadow-sm cursor-pointer"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-rose-600/20 text-rose-400 border border-rose-500/30 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <PlayCircle className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-xs text-slate-100 group-hover:text-rose-300 transition-colors">
+                  التحكم في الوسائط (Multimedia MPRIS)
+                </span>
+                <span className="text-[9px] bg-rose-500/20 text-rose-300 font-mono px-1.5 py-0.5 rounded">
+                  أساسي
+                </span>
+              </div>
+              <p className="text-[10px] text-slate-400 mt-0.5">
+                تشغيل/إيقاف الأغاني، التخطي، وضبط مستوى صوت {targetDevice.model}
+              </p>
+            </div>
+          </div>
+          <ChevronLeft className="w-4 h-4 text-slate-500 group-hover:text-rose-400 group-hover:-translate-x-1 transition-all" />
+        </button>
+
         {/* Send Files */}
         <button
           onClick={onSendFile}
-          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group"
+          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group cursor-pointer"
         >
           <div className="w-9 h-9 rounded-xl bg-cyan-600/20 text-cyan-400 flex items-center justify-center">
             <Send className="w-4 h-4" />
@@ -175,7 +201,7 @@ export const DevicePluginGrid: React.FC<DevicePluginGridProps> = ({
         {/* Ring phone (Find my phone) */}
         <button
           onClick={onFindPhone}
-          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group"
+          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group cursor-pointer"
         >
           <div className="w-9 h-9 rounded-xl bg-amber-600/20 text-amber-400 flex items-center justify-center">
             <Volume2 className="w-4 h-4" />
@@ -193,13 +219,13 @@ export const DevicePluginGrid: React.FC<DevicePluginGridProps> = ({
         {/* Send Ping */}
         <button
           onClick={onPing}
-          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group"
+          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group cursor-pointer"
         >
-          <div className="w-9 h-9 rounded-xl bg-rose-600/20 text-rose-400 flex items-center justify-center">
+          <div className="w-9 h-9 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center">
             <Bell className="w-4 h-4" />
           </div>
           <div>
-            <div className="font-bold text-xs text-slate-200 group-hover:text-rose-400 transition-colors">
+            <div className="font-bold text-xs text-slate-200 group-hover:text-purple-400 transition-colors">
               إرسال تنبيه (Ping)
             </div>
             <div className="text-[10px] text-slate-500 mt-0.5">
@@ -211,7 +237,7 @@ export const DevicePluginGrid: React.FC<DevicePluginGridProps> = ({
         {/* Shared Clipboard */}
         <button
           onClick={onOpenClipboard}
-          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group"
+          className="bg-slate-900/90 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 rounded-2xl p-3.5 text-right transition-all flex flex-col justify-between h-28 group cursor-pointer"
         >
           <div className="w-9 h-9 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center">
             <Clipboard className="w-4 h-4" />

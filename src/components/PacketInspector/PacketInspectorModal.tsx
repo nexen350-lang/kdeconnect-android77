@@ -105,7 +105,7 @@ export const PacketInspectorModal: React.FC = () => {
       {/* Filter and Search Bar */}
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-          {['all', 'remotebrowse', 'chat', 'sftp', 'pair'].map(t => (
+          {['all', 'remotebrowse', 'chat', 'mpris', 'sftp', 'pair'].map(t => (
             <button
               key={t}
               onClick={() => setFilterType(t)}

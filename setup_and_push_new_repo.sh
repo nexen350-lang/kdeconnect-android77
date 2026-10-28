@@ -34,6 +34,10 @@ cp -r src/main/java/org/kde/kdeconnect/plugins/chat/* "$TEMP_DIR/src/main/java/o
 # Copy GitHub Actions CI/CD with automatic Release publication
 cp .github/workflows/android-build-apk.yml "$TEMP_DIR/.github/workflows/android-build-apk.yml"
 
+# Copy preparation scripts
+mkdir -p "$TEMP_DIR/scripts"
+cp -r scripts/* "$TEMP_DIR/scripts/" 2>/dev/null || true
+
 # Configure Gradle properties and SDK compatibility
 echo "android.builder.sdkDownload=true" >> "$TEMP_DIR/gradle.properties"
 if grep -q "compileSdk = 37" "$TEMP_DIR/build.gradle.kts" 2>/dev/null; then

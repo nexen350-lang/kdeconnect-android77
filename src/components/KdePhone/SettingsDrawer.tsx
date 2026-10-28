@@ -16,7 +16,8 @@ import {
   Volume2, 
   Clipboard, 
   Check, 
-  HelpCircle 
+  HelpCircle,
+  PlayCircle
 } from 'lucide-react';
 import { AndroidDevice } from '../../types/kdeConnectApp';
 
@@ -36,6 +37,7 @@ export const SettingsDrawer: React.FC<SettingsDrawerProps> = ({
   const [plugins, setPlugins] = useState({
     remoteBrowse: true,
     bulletinChat: true,
+    mpris: true,
     share: true,
     findPhone: true,
     ping: true,
@@ -118,6 +120,25 @@ export const SettingsDrawer: React.FC<SettingsDrawerProps> = ({
                 checked={plugins.bulletinChat}
                 onChange={() => togglePlugin('bulletinChat')}
                 className="w-4 h-4 accent-purple-600 cursor-pointer"
+              />
+            </div>
+
+            {/* Multimedia Control (MPRIS) */}
+            <div className="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-rose-600/20 text-rose-400 flex items-center justify-center">
+                  <PlayCircle className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-white text-xs">التحكم بالوسائط المتعددة (MPRIS)</div>
+                  <div className="text-[10px] text-slate-400">التحكم بتشغيل الموسيقى ومستوى الصوت عن بُعد</div>
+                </div>
+              </div>
+              <input
+                type="checkbox"
+                checked={plugins.mpris}
+                onChange={() => togglePlugin('mpris')}
+                className="w-4 h-4 accent-rose-600 cursor-pointer"
               />
             </div>
 
