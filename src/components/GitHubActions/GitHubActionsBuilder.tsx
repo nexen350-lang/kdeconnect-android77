@@ -75,28 +75,11 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          cache: 'gradle'
-
-      - name: Prepare Android SDK & Accept Licenses
-        run: |
-          mkdir -p "$ANDROID_HOME/licenses" || true
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
-          yes | sdkmanager --licenses 2>/dev/null || true
-
       - name: Prepare KDE Connect Android Source
         run: |
           if [ ! -f "gradlew" ] || [ ! -f "build.gradle.kts" ]; then
             git clone --depth 1 https://github.com/KDE/kdeconnect-android.git /tmp/upstream_kde
-            mkdir -p /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/remotebrowse
-            mkdir -p /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/chat
-            cp -r src/main/java/org/kde/kdeconnect/plugins/remotebrowse/* /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/remotebrowse/ 2>/dev/null || true
-            cp -r src/main/java/org/kde/kdeconnect/plugins/chat/* /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/chat/ 2>/dev/null || true
-            rsync -a --exclude='.git' /tmp/upstream_kde/ ./
+            rsync -a --exclude='.git' --exclude='.github' /tmp/upstream_kde/ ./
             rm -rf /tmp/upstream_kde
           fi
           echo "android.builder.sdkDownload=true" >> gradle.properties
@@ -105,6 +88,18 @@ jobs:
             sed -i 's/targetSdk = 37/targetSdk = 35/g' build.gradle.kts
           fi
           chmod +x gradlew
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Prepare Android SDK & Accept Licenses
+        run: |
+          mkdir -p "$ANDROID_HOME/licenses" || true
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
+          yes | sdkmanager --licenses 2>/dev/null || true
 
       - name: Assemble Android APK
         run: ./gradlew assembleDebug -x test -x lint --no-daemon --stacktrace

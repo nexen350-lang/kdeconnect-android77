@@ -34,12 +34,176 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Prepare KDE Connect Android Source
+        run: |
+          echo "=========================================================="
+          echo "  Checking KDE Connect Android Project Workspace..."
+          echo "=========================================================="
+          if [ ! -f "gradlew" ] || [ ! -f "build.gradle.kts" ]; then
+            echo "Standalone repository detected. Fetching upstream KDE Connect Android source..."
+            git clone --depth 1 https://github.com/KDE/kdeconnect-android.git /tmp/upstream_kde
+            rsync -a --exclude='.git' --exclude='.github' /tmp/upstream_kde/ ./
+            rm -rf /tmp/upstream_kde
+          else
+            echo "KDE Connect Android project files already present."
+          fi
+
+          echo "Injecting RemoteBrowsePlugin and ChatPlugin..."
+          mkdir -p src/main/java/org/kde/kdeconnect/plugins/remotebrowse
+          mkdir -p src/main/java/org/kde/kdeconnect/plugins/chat
+
+          # Ensure RemoteBrowsePlugin is written
+          if [ ! -f "src/main/java/org/kde/kdeconnect/plugins/remotebrowse/RemoteBrowsePlugin.kt" ]; then
+            cat << 'EOF' > src/main/java/org/kde/kdeconnect/plugins/remotebrowse/RemoteBrowsePlugin.kt
+package org.kde.kdeconnect.plugins.remotebrowse
+
+import android.os.Environment
+import android.util.Log
+import org.json.JSONArray
+import org.json.JSONObject
+import org.kde.kdeconnect.NetworkPacket
+import org.kde.kdeconnect.plugins.Plugin
+import org.kde.kdeconnect.plugins.PluginFactory.LoadablePlugin
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+
+@LoadablePlugin
+class RemoteBrowsePlugin : Plugin() {
+    override val displayName: String get() = "Remote File Browser"
+    override val description: String get() = "Browse remote Android storage and download files directly"
+
+    override val supportedPacketTypes: Array<String> = arrayOf(
+        PACKET_TYPE_BROWSE_REQUEST, PACKET_TYPE_BROWSE_RESPONSE,
+        PACKET_TYPE_DOWNLOAD_REQUEST, PACKET_TYPE_UPLOAD_REQUEST
+    )
+    override val outgoingPacketTypes: Array<String> = arrayOf(
+        PACKET_TYPE_BROWSE_REQUEST, PACKET_TYPE_BROWSE_RESPONSE,
+        PACKET_TYPE_DOWNLOAD_REQUEST, PACKET_TYPE_UPLOAD_REQUEST
+    )
+
+    override fun onPacketReceived(np: NetworkPacket): Boolean {
+        when (np.type) {
+            PACKET_TYPE_BROWSE_REQUEST -> handleBrowseRequest(np)
+            PACKET_TYPE_DOWNLOAD_REQUEST -> handleDownloadRequest(np)
+            else -> return false
+        }
+        return true
+    }
+
+    private fun handleBrowseRequest(np: NetworkPacket) {
+        val reqPath = np.getString("path", "/")
+        val rootDir = Environment.getExternalStorageDirectory()
+        val target = if (reqPath == "/" || reqPath.isEmpty()) rootDir else File(rootDir, reqPath.removePrefix("/"))
+        val itemsArray = JSONArray()
+
+        if (target.exists() && target.isDirectory) {
+            target.listFiles()?.sortedWith(compareBy({ !it.isDirectory }, { it.name.lowercase() }))?.forEach { file ->
+                val obj = JSONObject().apply {
+                    put("name", file.name)
+                    put("isDirectory", file.isDirectory)
+                    put("size", if (file.isDirectory) 0 else file.length())
+                    put("lastModified", file.lastModified())
+                    put("path", file.absolutePath.replace(rootDir.absolutePath, ""))
+                }
+                itemsArray.put(obj)
+            }
+        }
+
+        val resp = NetworkPacket(PACKET_TYPE_BROWSE_RESPONSE).apply {
+            set("path", reqPath)
+            set("items", itemsArray)
+            set("success", true)
+        }
+        device.sendPacket(resp)
+    }
+
+    private fun handleDownloadRequest(np: NetworkPacket) {
+        val reqPath = np.getString("path", "")
+        val rootDir = Environment.getExternalStorageDirectory()
+        val file = File(rootDir, reqPath.removePrefix("/"))
+        if (!file.exists() || file.isDirectory) return
+
+        val resp = NetworkPacket(PACKET_TYPE_DOWNLOAD_REQUEST).apply {
+            set("path", reqPath)
+            set("fileName", file.name)
+            set("size", file.length())
+            payload = FileInputStream(file)
+            payloadSize = file.length()
+        }
+        device.sendPacket(resp)
+    }
+
+    companion object {
+        const val PACKET_TYPE_BROWSE_REQUEST = "kdeconnect.browse.request"
+        const val PACKET_TYPE_BROWSE_RESPONSE = "kdeconnect.browse.response"
+        const val PACKET_TYPE_DOWNLOAD_REQUEST = "kdeconnect.browse.download"
+        const val PACKET_TYPE_UPLOAD_REQUEST = "kdeconnect.browse.upload"
+    }
+}
+EOF
+          fi
+
+          # Ensure ChatPlugin is written
+          if [ ! -f "src/main/java/org/kde/kdeconnect/plugins/chat/ChatPlugin.kt" ]; then
+            cat << 'EOF' > src/main/java/org/kde/kdeconnect/plugins/chat/ChatPlugin.kt
+package org.kde.kdeconnect.plugins.chat
+
+import android.util.Log
+import org.json.JSONObject
+import org.kde.kdeconnect.NetworkPacket
+import org.kde.kdeconnect.plugins.Plugin
+import org.kde.kdeconnect.plugins.PluginFactory.LoadablePlugin
+import java.util.UUID
+
+@LoadablePlugin
+class ChatPlugin : Plugin() {
+    override val displayName: String get() = "Bulletin Chat & Notes"
+    override val description: String get() = "Persistent device chat and shared bulletin board notes"
+
+    override val supportedPacketTypes: Array<String> = arrayOf(PACKET_TYPE_CHAT_MESSAGE, PACKET_TYPE_CHAT_ACK)
+    override val outgoingPacketTypes: Array<String> = arrayOf(PACKET_TYPE_CHAT_MESSAGE, PACKET_TYPE_CHAT_ACK)
+
+    override fun onPacketReceived(np: NetworkPacket): Boolean {
+        if (np.type == PACKET_TYPE_CHAT_MESSAGE) {
+            val id = np.getString("id", UUID.randomUUID().toString())
+            val text = np.getString("text", "")
+            Log.i("ChatPlugin", "Chat from ${device.name}: $text")
+            val ack = NetworkPacket(PACKET_TYPE_CHAT_ACK).apply {
+                set("messageId", id)
+                set("deliveredAt", System.currentTimeMillis())
+            }
+            device.sendPacket(ack)
+            return true
+        }
+        return false
+    }
+
+    companion object {
+        const val PACKET_TYPE_CHAT_MESSAGE = "kdeconnect.chat.message"
+        const val PACKET_TYPE_CHAT_ACK = "kdeconnect.chat.ack"
+    }
+}
+EOF
+          fi
+
+          # Enable auto SDK download and configure Gradle
+          echo "android.builder.sdkDownload=true" >> gradle.properties
+          
+          # Adjust compileSdk to 35 for preinstalled runner compatibility
+          if grep -q "compileSdk = 37" build.gradle.kts 2>/dev/null; then
+            echo "Adjusting compileSdk from 37 to 35 for runner stability..."
+            sed -i 's/compileSdk = 37/compileSdk = 35/g' build.gradle.kts
+            sed -i 's/targetSdk = 37/targetSdk = 35/g' build.gradle.kts
+          fi
+
+          chmod +x gradlew
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
-          cache: 'gradle'
 
       - name: Prepare Android SDK & Accept Licenses
         run: |
@@ -49,44 +213,6 @@ jobs:
           echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
           echo "84831b9409646a323e44406f89020195e6e0ca07" >> "$ANDROID_HOME/licenses/android-sdk-preview-license" 2>/dev/null || true
           yes | sdkmanager --licenses 2>/dev/null || true
-
-      - name: Prepare KDE Connect Android Source
-        run: |
-          echo "Checking for KDE Connect Android project files..."
-          if [ ! -f "gradlew" ] || [ ! -f "build.gradle.kts" ]; then
-            echo "Standalone repository detected. Fetching upstream KDE Connect Android source..."
-            git clone --depth 1 https://github.com/KDE/kdeconnect-android.git /tmp/upstream_kde
-            
-            # Inject custom Kotlin plugins
-            echo "Injecting RemoteBrowsePlugin and ChatPlugin..."
-            mkdir -p /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/remotebrowse
-            mkdir -p /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/chat
-            
-            if [ -d "src/main/java/org/kde/kdeconnect/plugins/remotebrowse" ]; then
-              cp -r src/main/java/org/kde/kdeconnect/plugins/remotebrowse/* /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/remotebrowse/ 2>/dev/null || true
-            fi
-            if [ -d "src/main/java/org/kde/kdeconnect/plugins/chat" ]; then
-              cp -r src/main/java/org/kde/kdeconnect/plugins/chat/* /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/chat/ 2>/dev/null || true
-            fi
-            
-            # Sync files from upstream without overwriting repo's .git
-            rsync -a --exclude='.git' /tmp/upstream_kde/ ./
-            rm -rf /tmp/upstream_kde
-          else
-            echo "KDE Connect Android project files verified."
-          fi
-          
-          # Enable auto SDK download in Gradle
-          echo "android.builder.sdkDownload=true" >> gradle.properties
-          
-          # Adjust compileSdk to 35 for preinstalled runner compatibility if needed
-          if grep -q "compileSdk = 37" build.gradle.kts 2>/dev/null; then
-            echo "Adjusting compileSdk from 37 to 35 for runner stability..."
-            sed -i 's/compileSdk = 37/compileSdk = 35/g' build.gradle.kts
-            sed -i 's/targetSdk = 37/targetSdk = 35/g' build.gradle.kts
-          fi
-          
-          chmod +x gradlew
 
       - name: Apply Feature Patches
         run: |
