@@ -16,7 +16,8 @@ import {
   ArrowLeft,
   Wifi,
   ChevronDown,
-  Layers
+  Layers,
+  Download
 } from 'lucide-react';
 import { AndroidDevice } from '../../types/kdeConnectApp';
 
@@ -29,6 +30,7 @@ interface KdeTopBarProps {
   onOpenSettings: () => void;
   onOpenEncryptionInfo: () => void;
   onSwitchDevice: () => void;
+  onOpenApkGuide?: () => void;
   isRtl?: boolean;
 }
 
@@ -41,6 +43,7 @@ export const KdeTopBar: React.FC<KdeTopBarProps> = ({
   onOpenSettings,
   onOpenEncryptionInfo,
   onSwitchDevice,
+  onOpenApkGuide,
   isRtl = true
 }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -96,6 +99,18 @@ export const KdeTopBar: React.FC<KdeTopBarProps> = ({
 
         {/* Actions right */}
         <div className="flex items-center gap-1.5">
+          {/* APK Guide Button */}
+          {onOpenApkGuide && (
+            <button
+              onClick={onOpenApkGuide}
+              className="flex items-center gap-1 text-[11px] font-bold px-2 py-1 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 transition-colors shadow-sm"
+              title="الحصول على APK جاهز أو تثبيت التطبيق"
+            >
+              <Download className="w-3.5 h-3.5 text-emerald-400" />
+              <span>APK</span>
+            </button>
+          )}
+
           {/* Refresh discovery */}
           <button
             onClick={handleRefresh}
@@ -120,7 +135,20 @@ export const KdeTopBar: React.FC<KdeTopBarProps> = ({
                   className="fixed inset-0 z-40" 
                   onClick={() => setShowMenu(false)} 
                 />
-                <div className="absolute right-0 top-full mt-1 w-56 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl py-1.5 z-50 text-xs text-slate-200 animate-in fade-in zoom-in-95 duration-100">
+                <div className="absolute right-0 top-full mt-1 w-60 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl py-1.5 z-50 text-xs text-slate-200 animate-in fade-in zoom-in-95 duration-100">
+                  {onOpenApkGuide && (
+                    <button
+                      onClick={() => {
+                        setShowMenu(false);
+                        onOpenApkGuide();
+                      }}
+                      className="w-full text-right px-3.5 py-2 hover:bg-slate-800 flex items-center justify-between gap-2 text-emerald-400 font-semibold"
+                    >
+                      <span>تحميل APK أو تثبيت التطبيق</span>
+                      <Download className="w-4 h-4" />
+                    </button>
+                  )}
+
                   <button
                     onClick={() => {
                       setShowMenu(false);

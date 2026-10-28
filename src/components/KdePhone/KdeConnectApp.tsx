@@ -12,6 +12,7 @@ import { FindPhoneModal } from './FindPhoneModal';
 import { SendFileDialog } from './SendFileDialog';
 import { SettingsDrawer } from './SettingsDrawer';
 import { MultimediaControlModal } from './MultimediaControlModal';
+import { ApkDownloadGuideModal } from './ApkDownloadGuideModal';
 import { DEVICE_LOCAL_S24, DEVICE_REMOTE_PIXEL8 } from '../../data/androidFileSystems';
 import { AndroidDevice } from '../../types/kdeConnectApp';
 import { 
@@ -22,7 +23,8 @@ import {
   Maximize2, 
   Minimize2,
   CheckCircle2,
-  Bell
+  Bell,
+  Download
 } from 'lucide-react';
 
 export const KdeConnectApp: React.FC = () => {
@@ -34,6 +36,7 @@ export const KdeConnectApp: React.FC = () => {
   const [showSendFile, setShowSendFile] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showMediaModal, setShowMediaModal] = useState(false);
+  const [showApkGuide, setShowApkGuide] = useState(false);
   const [isPhoneFrame, setIsPhoneFrame] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimerRef = React.useRef<any>(null);
@@ -97,6 +100,16 @@ export const KdeConnectApp: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-1.5">
+          {/* APK / Direct Install Button */}
+          <button
+            onClick={() => setShowApkGuide(true)}
+            className="px-2.5 py-1.5 bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 text-xs font-semibold rounded-xl border border-emerald-500/40 flex items-center gap-1.5 transition-colors cursor-pointer shadow-sm"
+            title="الحصول على APK جاهز أو التثبيت المباشر بدون GitHub"
+          >
+            <Download className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="hidden sm:inline">تحميل APK / تثبيت</span>
+          </button>
+
           {/* Switch perspective button */}
           <button
             onClick={handleSwitchDevicePerspective}
@@ -157,6 +170,7 @@ export const KdeConnectApp: React.FC = () => {
           onOpenSettings={() => setShowSettings(true)}
           onOpenEncryptionInfo={() => setShowSettings(true)}
           onSwitchDevice={handleSwitchDevicePerspective}
+          onOpenApkGuide={() => setShowApkGuide(true)}
         />
 
         {/* Dynamic App Screens */}
@@ -230,6 +244,14 @@ export const KdeConnectApp: React.FC = () => {
           targetDevice={deviceB}
           onClose={() => setShowMediaModal(false)}
           onNotify={showToast}
+        />
+      )}
+
+      {showApkGuide && (
+        <ApkDownloadGuideModal
+          isOpen={showApkGuide}
+          onClose={() => setShowApkGuide(false)}
+          appUrl={typeof window !== 'undefined' ? window.location.href : ''}
         />
       )}
 
