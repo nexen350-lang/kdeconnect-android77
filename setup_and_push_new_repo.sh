@@ -17,10 +17,11 @@ fi
 
 TARGET_REPO="$1"
 TEMP_DIR="/tmp/kdeconnect_build_workspace"
+UPSTREAM_TAG="v1.37.0"
 
-echo "==> Step 1: Cloning upstream KDE/kdeconnect-android..."
+echo "==> Step 1: Cloning upstream KDE/kdeconnect-android (${UPSTREAM_TAG})..."
 rm -rf "$TEMP_DIR"
-git clone --depth 1 https://github.com/KDE/kdeconnect-android.git "$TEMP_DIR"
+git clone --depth 1 --branch "${UPSTREAM_TAG}" https://github.com/KDE/kdeconnect-android.git "$TEMP_DIR"
 
 echo "==> Step 2: Injecting RemoteBrowsePlugin and ChatPlugin..."
 mkdir -p "$TEMP_DIR/src/main/java/org/kde/kdeconnect/plugins/remotebrowse"
@@ -34,16 +35,13 @@ cp -r src/main/java/org/kde/kdeconnect/plugins/chat/* "$TEMP_DIR/src/main/java/o
 # Copy GitHub Actions CI/CD with automatic Release publication
 cp .github/workflows/android-build-apk.yml "$TEMP_DIR/.github/workflows/android-build-apk.yml"
 
-# Copy preparation scripts
-mkdir -p "$TEMP_DIR/scripts"
+# Copy preparation scripts and patches
+mkdir -p "$TEMP_DIR/scripts" "$TEMP_DIR/patches"
 cp -r scripts/* "$TEMP_DIR/scripts/" 2>/dev/null || true
+cp -r patches/* "$TEMP_DIR/patches/" 2>/dev/null || true
 
-# Configure Gradle properties and SDK compatibility
+# Configure Gradle properties for automatic SDK downloading
 echo "android.builder.sdkDownload=true" >> "$TEMP_DIR/gradle.properties"
-if grep -q "compileSdk = 37" "$TEMP_DIR/build.gradle.kts" 2>/dev/null; then
-    sed -i 's/compileSdk = 37/compileSdk = 35/g' "$TEMP_DIR/build.gradle.kts"
-    sed -i 's/targetSdk = 37/targetSdk = 35/g' "$TEMP_DIR/build.gradle.kts"
-fi
 
 echo "==> Step 3: Setting remote to $TARGET_REPO and pushing..."
 cd "$TEMP_DIR"
@@ -51,7 +49,7 @@ git remote set-url origin "$TARGET_REPO"
 git branch -M main
 
 git add .
-git commit -m "feat: Add Remote File Browser, Bulletin Chat & Automated Release" || true
+git commit -m "feat: Add Remote File Browser, Bulletin Chat & Verified CI/CD Pipeline" || true
 git push -u origin main --force
 
 echo "=========================================================="

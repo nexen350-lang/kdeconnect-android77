@@ -5,16 +5,15 @@
 
 package org.kde.kdeconnect.plugins.remotebrowse
 
-import android.content.Context
 import android.os.Environment
 import android.util.Log
-import org.json.JSONArray
-import org.json.JSONObject
-import org.kde.kdeconnect.Device
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.addJsonObject
+import kotlinx.serialization.json.buildJsonArray
+import kotlinx.serialization.json.put
 import org.kde.kdeconnect.NetworkPacket
 import org.kde.kdeconnect.plugins.Plugin
 import org.kde.kdeconnect.plugins.PluginFactory.LoadablePlugin
-import org.kde.kdeconnect.plugins.PluginUiMenuEntry
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -50,7 +49,7 @@ class RemoteBrowsePlugin : Plugin() {
             PACKET_TYPE_DOWNLOAD_REQUEST -> handleDownloadRequest(np)
             PACKET_TYPE_UPLOAD_REQUEST -> handleUploadRequest(np)
             PACKET_TYPE_BROWSE_RESPONSE -> {
-                Log.d(LOG_TAG, "Received browse response from ${device.name}")
+                Log.d(LOG_TAG, "Received browse response from ${if (isDeviceInitialized) device.name else "peer"}")
             }
             else -> return false
         }
@@ -71,32 +70,34 @@ class RemoteBrowsePlugin : Plugin() {
                 return
             }
 
-            val fileArray = JSONArray()
             val files = targetDir.listFiles() ?: emptyArray()
+            val showHidden = np.getBoolean("showHidden", false)
 
-            for (file in files) {
-                if (file.name.startsWith(".") && !np.getBoolean("showHidden", false)) {
-                    continue
+            val fileArray: JsonArray = buildJsonArray {
+                for (file in files) {
+                    if (file.name.startsWith(".") && !showHidden) {
+                        continue
+                    }
+                    addJsonObject {
+                        put("name", file.name)
+                        put("path", file.canonicalPath)
+                        put("isDirectory", file.isDirectory)
+                        put("sizeBytes", if (file.isDirectory) 4096L else file.length())
+                        put("lastModified", file.lastModified())
+                        put("canRead", file.canRead())
+                        put("canWrite", file.canWrite())
+                        put("mimeType", detectMimeType(file))
+                    }
                 }
-                val obj = JSONObject().apply {
-                    put("name", file.name)
-                    put("path", file.canonicalPath)
-                    put("isDirectory", file.isDirectory)
-                    put("sizeBytes", if (file.isDirectory) 4096L else file.length())
-                    put("lastModified", file.lastModified())
-                    put("canRead", file.canRead())
-                    put("canWrite", file.canWrite())
-                    put("mimeType", detectMimeType(file))
-                }
-                fileArray.put(obj)
             }
 
             response.set("path", targetDir.canonicalPath)
             response.set("parentPath", targetDir.parent ?: rootPath)
             response.set("files", fileArray)
             response.set("success", true)
-            device.sendPacket(response)
-
+            if (isDeviceInitialized) {
+                device.sendPacket(response)
+            }
         } catch (secEx: SecurityException) {
             Log.w(LOG_TAG, "Path traversal attempt blocked: ${secEx.message}")
             sendErrorResponse(response, "ERROR_INVALID_PATH", "Path traversal forbidden")
@@ -114,16 +115,16 @@ class RemoteBrowsePlugin : Plugin() {
             if (!file.exists() || file.isDirectory) {
                 return
             }
-
             val response = NetworkPacket(PACKET_TYPE_DOWNLOAD_REQUEST).apply {
                 set("path", file.canonicalPath)
                 set("fileName", file.name)
                 set("size", file.length())
                 set("success", true)
-                payload = FileInputStream(file)
-                payloadSize = file.length()
+                payload = NetworkPacket.Payload(FileInputStream(file), file.length())
             }
-            device.sendPacket(response)
+            if (isDeviceInitialized) {
+                device.sendPacket(response)
+            }
         } catch (e: Exception) {
             Log.e(LOG_TAG, "Error streaming download file", e)
         }
@@ -133,7 +134,7 @@ class RemoteBrowsePlugin : Plugin() {
         val rootPath = Environment.getExternalStorageDirectory().canonicalPath
         val targetDir = np.getString("targetDirectory", rootPath)
         val fileName = np.getString("fileName", "upload_${System.currentTimeMillis()}.bin")
-        val payloadStream = np.payload ?: return
+        val payloadStream = np.payload?.inputStream ?: return
 
         try {
             val destDir = resolveAndSanitizePath(targetDir, rootPath)
@@ -151,7 +152,9 @@ class RemoteBrowsePlugin : Plugin() {
         response.set("success", false)
         response.set("errorCode", code)
         response.set("errorMessage", msg)
-        device.sendPacket(response)
+        if (isDeviceInitialized) {
+            device.sendPacket(response)
+        }
     }
 
     @Throws(SecurityException::class)
@@ -182,8 +185,8 @@ class RemoteBrowsePlugin : Plugin() {
     }
 
     override fun getUiMenuEntries(): List<PluginUiMenuEntry> = listOf(
-        PluginUiMenuEntry("تصفح ملفات الهاتف عن بعد") { activity ->
-            Log.i(LOG_TAG, "Opened Remote File Browser on device: ${device.name}")
+        PluginUiMenuEntry("تصفح ملفات الهاتف عن بعد") { _ ->
+            Log.i(LOG_TAG, "Opened Remote File Browser on device: ${if (isDeviceInitialized) device.name else "peer"}")
         }
     )
 

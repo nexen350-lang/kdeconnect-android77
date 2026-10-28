@@ -54,16 +54,27 @@ jobs:
           submodules: recursive
           fetch-depth: 1
 
-      - name: Set up JDK 17
+      - name: Prepare KDE Connect Android Source
+        run: |
+          if [ -f "scripts/prepare_kdeconnect.sh" ]; then
+            chmod +x scripts/prepare_kdeconnect.sh
+            ./scripts/prepare_kdeconnect.sh
+          fi
+
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
-          cache: 'gradle'
+          java-version: '21'
 
-      - name: Accept Android SDK Licenses
+      - name: Prepare Android SDK & Accept Licenses
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          mkdir -p "$ANDROID_HOME/licenses" || true
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
+          echo "84831b9409646a323e44406f89020195e6e0ca07" >> "$ANDROID_HOME/licenses/android-sdk-preview-license" 2>/dev/null || true
+          yes | sdkmanager --licenses 2>/dev/null || true
+          sdkmanager "platforms;android-37" "build-tools;35.0.0" 2>/dev/null || true
 
       - name: Make Gradlew Executable
         run: chmod +x gradlew

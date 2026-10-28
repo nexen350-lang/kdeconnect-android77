@@ -5,18 +5,10 @@
 
 package org.kde.kdeconnect.plugins.chat
 
-import android.content.Context
 import android.util.Log
-import org.json.JSONArray
-import org.json.JSONObject
-import org.kde.kdeconnect.Device
 import org.kde.kdeconnect.NetworkPacket
 import org.kde.kdeconnect.plugins.Plugin
 import org.kde.kdeconnect.plugins.PluginFactory.LoadablePlugin
-import org.kde.kdeconnect.plugins.PluginUiMenuEntry
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
 import java.util.UUID
 
 @LoadablePlugin
@@ -54,7 +46,7 @@ class ChatPlugin : Plugin() {
     private fun handleIncomingMessage(np: NetworkPacket) {
         val id = np.getString("id", UUID.randomUUID().toString())
         val text = np.getString("text", "")
-        Log.i(LOG_TAG, "Incoming chat from ${device.name}: $text")
+        Log.i(LOG_TAG, "Incoming chat from ${if (isDeviceInitialized) device.name else "peer"}: $text")
 
         // Send delivery receipt ACK
         val ack = NetworkPacket(PACKET_TYPE_CHAT_ACK).apply {
@@ -62,17 +54,19 @@ class ChatPlugin : Plugin() {
             set("status", "delivered")
             set("timestamp", System.currentTimeMillis())
         }
-        device.sendPacket(ack)
+        if (isDeviceInitialized) {
+            device.sendPacket(ack)
+        }
     }
 
     private fun handleIncomingAck(np: NetworkPacket) {
         val msgId = np.getString("messageId", "")
-        Log.d(LOG_TAG, "Message $msgId delivered to ${device.name}")
+        Log.d(LOG_TAG, "Message $msgId delivered to ${if (isDeviceInitialized) device.name else "peer"}")
     }
 
     override fun getUiMenuEntries(): List<PluginUiMenuEntry> = listOf(
-        PluginUiMenuEntry("المحادثة ولوحة الملاحظات (Bulletin)") { activity ->
-            Log.i(LOG_TAG, "Opened Chat on device: ${device.name}")
+        PluginUiMenuEntry("المحادثة ولوحة الملاحظات (Bulletin)") { _ ->
+            Log.i(LOG_TAG, "Opened Chat on device: ${if (isDeviceInitialized) device.name else "peer"}")
         }
     )
 

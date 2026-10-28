@@ -39,22 +39,13 @@ jobs:
           if [ -f "scripts/prepare_kdeconnect.sh" ]; then
             chmod +x scripts/prepare_kdeconnect.sh
             ./scripts/prepare_kdeconnect.sh
-          else
-            echo "Running inline source preparation..."
-            if [ ! -f "gradlew" ] || [ ! -f "build.gradle.kts" ]; then
-              git clone --depth 1 https://github.com/KDE/kdeconnect-android.git /tmp/upstream_kde
-              rsync -a --exclude='.git' --exclude='.github' /tmp/upstream_kde/ ./
-              rm -rf /tmp/upstream_kde
-            fi
-            echo "android.builder.sdkDownload=true" >> gradle.properties
-            chmod +x gradlew
           fi
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Prepare Android SDK & Accept Licenses
         run: |
@@ -64,15 +55,18 @@ jobs:
           echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
           echo "84831b9409646a323e44406f89020195e6e0ca07" >> "$ANDROID_HOME/licenses/android-sdk-preview-license" 2>/dev/null || true
           yes | sdkmanager --licenses 2>/dev/null || true
+          echo "Ensuring compileSdk 37 and build tools are installed..."
+          sdkmanager "platforms;android-37" "build-tools;35.0.0" 2>/dev/null || true
 
       - name: Assemble Android APK (${{ github.event.inputs.build_type || 'debug' }})
         run: |
           TARGET_TYPE="${{ github.event.inputs.build_type || 'debug' }}"
           echo "Building Android APK target: $TARGET_TYPE"
+          chmod +x ./gradlew
           if [ "$TARGET_TYPE" = "release" ]; then
-            ./gradlew assembleRelease -x test -x lint --no-daemon --stacktrace || ./gradlew assembleDebug -x test -x lint --no-daemon --stacktrace
+            ./gradlew assembleRelease -x test -x lint --no-daemon --console=plain --stacktrace || ./gradlew assembleDebug -x test -x lint --no-daemon --console=plain --stacktrace
           else
-            ./gradlew assembleDebug -x test -x lint --no-daemon --stacktrace
+            ./gradlew assembleDebug -x test -x lint --no-daemon --console=plain --stacktrace
           fi
 
       - name: Stage APK Artifacts
@@ -80,13 +74,6 @@ jobs:
           mkdir -p build-artifacts
           echo "Searching for compiled APKs..."
           find . -type f -name "*.apk" -not -path "*/intermediates/*" -exec cp -v {} build-artifacts/ \;
-          
-          # Fallback package if environment constraints prevented standard packaging
-          if [ -z "$(ls -A build-artifacts/)" ]; then
-            echo "Creating verified release package bundle..."
-            echo "KDE Connect Android v1.32.0 (Remote Browse & Bulletin Chat)" > build-artifacts/kdeconnect-remote-chat-v1.32.0-debug.apk
-          fi
-          
           ls -lah build-artifacts/
 
       - name: Upload APK as Workflow Artifact
@@ -95,7 +82,7 @@ jobs:
           name: kdeconnect-remote-chat-debug-apk
           path: build-artifacts/*.apk
           retention-days: 14
-          if-no-files-found: warn
+          if-no-files-found: error
 
       - name: Summary & Checksums
         run: |
@@ -116,19 +103,17 @@ jobs:
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         with:
-          tag_name: "v1.32.0-b${{ github.run_number }}"
-          name: "KDE Connect Android v1.32.0 (Build #${{ github.run_number }})"
+          tag_name: "v1.37.0-b${{ github.run_number }}"
+          name: "KDE Connect Android v1.37.0 (Build #${{ github.run_number }})"
           body: |
-            ## 🚀 KDE Connect Android v1.32.0 Extended P2P Release
-
-            ### 🌟 New Features:
-            * **📁 Remote File Browser & Downloader**: Browse and download files directly from paired Android devices over local Wi-Fi.
-            * **💬 Bulletin Chat & Shared Notes**: Persistent peer-to-peer device messaging and shared sticky notes.
-            * **🎵 Multimedia Control**: Integrated MPRIS remote playback, seek, volume, and track info.
-            * **🛡️ Security & Scoped Storage**: Full Android 15 compatibility, CWE-22 path traversal defense, and mutual TLS 1.3 encryption.
-
-            ### 📦 Download APK:
-            Download the `.apk` package attached below and install it directly on your Android device.
+            ## 🚀 KDE Connect Android v1.37.0 Extended Release
+            ### 🌟 Included Custom Features:
+            * **📁 Remote File Browser & Downloader**: Direct peer-to-peer file browsing and downloads over local Wi-Fi.
+            * **💬 Bulletin Chat & Shared Notes**: Persistent device-to-device chat messaging and sticky notes.
+            * **🎵 Multimedia Control**: MPRIS player control, media state, and volume management.
+            * **🛡️ Hardened Security**: CWE-22 path traversal prevention and strict TLS 1.3 socket validation.
+            ### 📦 Direct Installation:
+            Download the attached `.apk` file below and open it on your Android device to install or update.
           files: build-artifacts/*.apk
           draft: false
           prerelease: false

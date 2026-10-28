@@ -77,32 +77,28 @@ jobs:
 
       - name: Prepare KDE Connect Android Source
         run: |
-          if [ ! -f "gradlew" ] || [ ! -f "build.gradle.kts" ]; then
-            git clone --depth 1 https://github.com/KDE/kdeconnect-android.git /tmp/upstream_kde
-            rsync -a --exclude='.git' --exclude='.github' /tmp/upstream_kde/ ./
-            rm -rf /tmp/upstream_kde
+          if [ -f "scripts/prepare_kdeconnect.sh" ]; then
+            chmod +x scripts/prepare_kdeconnect.sh
+            ./scripts/prepare_kdeconnect.sh
           fi
-          echo "android.builder.sdkDownload=true" >> gradle.properties
-          if grep -q "compileSdk = 37" build.gradle.kts 2>/dev/null; then
-            sed -i 's/compileSdk = 37/compileSdk = 35/g' build.gradle.kts
-            sed -i 's/targetSdk = 37/targetSdk = 35/g' build.gradle.kts
-          fi
-          chmod +x gradlew
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Prepare Android SDK & Accept Licenses
         run: |
           mkdir -p "$ANDROID_HOME/licenses" || true
           echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
+          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
+          echo "84831b9409646a323e44406f89020195e6e0ca07" >> "$ANDROID_HOME/licenses/android-sdk-preview-license" 2>/dev/null || true
           yes | sdkmanager --licenses 2>/dev/null || true
+          sdkmanager "platforms;android-37" "build-tools;35.0.0" 2>/dev/null || true
 
       - name: Assemble Android APK
-        run: ./gradlew assembleDebug -x test -x lint --no-daemon --stacktrace
+        run: ./gradlew assembleDebug -x test -x lint --no-daemon --console=plain --stacktrace
 
       - name: Stage APK Artifacts
         run: |
