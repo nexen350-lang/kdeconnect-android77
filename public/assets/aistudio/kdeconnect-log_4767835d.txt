@@ -1,0 +1,465 @@
+KDE Connect 1.37.0-debug
+Android 13 (OPPO CPH2219)
+--------- beginning of system
+10-28 16:23:12.814 27641 27641 I Quality : ActivityThread: createClassLoader delay 965 /data/app/~~HxFY5cIrOouXurjJqPGrBg==/org.kde.kdeconnect_tp.debug-OzmCQlp1AvOuUmGgzkqtLA==/base.apk 27641
+10-28 16:23:12.818 27641 27641 I Quality : ActivityThread: createOrUpdateClassLoaderLocked delay 988 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:13.308 27641 27641 I Quality : ActivityThread: callApplicationOnCreate delay 370 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:13.312 27641 27641 I Quality : ActivityThread: bindApplication delay 1605 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:13.314 27641 27698 I Quality : Blocked msg = Package name: org.kde.kdeconnect_tp.debug [ schedGroup: 5 schedPolicy: 0 ] process the message: { when=-1s635ms what=110 target=android.app.ActivityThread$H obj=AppBindData{appInfo=ApplicationInfo{b0cda10 org.kde.kdeconnect_tp.debug}} } took 1605 ms
+10-28 16:23:13.726 27641 27641 E OplusCustomizeRestrictionManager: sInstance is null, start a new sInstance
+10-28 16:23:13.884 27641 27641 I Quality : ActivityThread: activityStart delay 569 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:13.974 27641 27641 D OplusInputMethodUtil: init sDebug to false, init sDebugIme to false, init sAlwaysOn to false
+10-28 16:23:13.974 27641 27641 D OplusInputMethodUtil: updateDebugToClass InputMethodManager.DEBUG = false
+10-28 16:23:13.974 27641 27641 D OplusInputMethodUtil: updateDebugToClass ImeFocusController.DEBUG = false
+10-28 16:23:13.974 27641 27641 D OplusInputMethodUtil: updateDebugToClass BaseInputConnection.DEBUG = false
+10-28 16:23:13.974 27641 27641 D OplusInputMethodUtil: updateDebugToClass ImeFocusController.sDebugIme = false
+10-28 16:23:14.013 27641 27641 I Quality : ActivityThread: activityLifecycle delay 700 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:14.017 27641 27641 I Quality : Skipped: false 2 cost 45.86505 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:14.931 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.13948422
+10-28 16:23:15.006 27641 27710 I Quality : ActivityThread: setSurface delay 71 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:15.412 27641 27641 I Quality : ActivityThread: doFrame delay 1396 org.kde.kdeconnect_tp.debug 27641
+10-28 16:23:15.413 27641 27698 I Quality : Blocked msg = Package name: org.kde.kdeconnect_tp.debug [ schedGroup: 1 schedPolicy: 0 ] process the message: { when=-2s472ms what=0 target=android.view.Choreographer$FrameHandler callback=android.view.Choreographer$FrameDisplayEventReceiver } took 1396 ms
+10-28 16:23:16.516 27641 27641 I Quality : Skipped: false 4 cost 81.299484 refreshRate 16455118 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:16.572 27641 27641 I Quality : Skipped: false 1 cost 21.688461 refreshRate 16454712 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:19.781 27641 27641 I Quality : Skipped: true 2 cost 35.65632 refreshRate 16509057 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:19.831 27641 27641 I Quality : Skipped: true 2 cost 37.65646 refreshRate 16509057 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:19.866 27641 27641 I Quality : Skipped: false 1 cost 22.93403 refreshRate 16509057 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:19.898 27641 27641 I Quality : Skipped: true 1 cost 22.300425 refreshRate 16486038 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:19.922 27641 27641 D OplusInputMethodManagerInternal: get inputMethodManager extension: com.android.internal.view.IInputMethodManager$Stub$Proxy@c3abc9c
+10-28 16:23:19.946 27641 27641 I Quality : Skipped: true 2 cost 37.468414 refreshRate 16486038 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:20.109 27641 27641 I Quality : Skipped: false 7 cost 118.1811 refreshRate 16482875 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:20.156 27641 27641 I Quality : Skipped: true 2 cost 33.445904 refreshRate 16478446 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:20.268 27641 27641 I Quality : Skipped: true 1 cost 29.9013 refreshRate 16465198 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:21.578 27641 27641 I Quality : Skipped: false 4 cost 72.767654 refreshRate 16451762 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:21.622 27641 27641 I Quality : Skipped: true 1 cost 17.527632 refreshRate 16442634 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:21.664 27641 27641 I Quality : Skipped: true 1 cost 27.502892 refreshRate 16444367 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:21.708 27641 27641 I Quality : Skipped: true 2 cost 38.2333 refreshRate 16440545 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:23:21.758 27641 27641 I Quality : Skipped: true 2 cost 39.27599 refreshRate 16444035 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:08.503 27641 27641 I Quality : Skipped: false 1 cost 20.017015 refreshRate 16549257 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:08.637 27641 27641 I Quality : Skipped: false 4 cost 71.81006 refreshRate 16549257 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:11.251 27641 27641 I Quality : Skipped: false 4 cost 71.13217 refreshRate 16545971 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:14.750 27641 27641 I Quality : Skipped: true 1 cost 32.027042 refreshRate 16459746 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:14.811 27641 27641 I Quality : Skipped: false 2 cost 43.79091 refreshRate 16454153 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:14.840 27641 27641 I Quality : Skipped: true 1 cost 24.360455 refreshRate 16442036 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:14.874 27641 27641 I Quality : Skipped: true 1 cost 24.668276 refreshRate 16445948 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:14.886 27641 27793 I Quality : TaskTrackInfo {"Pkg":org.kde.kdeconnect_tp.debug,"Window":org.kde.kdeconnect.ui.MainActivity,"Type":2,"Action":8,"Cost":158,"FV":16,"JC":16-48-0-1-5-31-0-0-1-1-0-0-0-3-0-0-0-0-1-3-1756343798-1756343798-1756343798-10*16-60-16-15-4-10-0-0-2-1-0-0-0-17-0-0-0-0-1-3-1756343830-1756343830-1756343830-10*16-59-32-11-0-2-0-0-2-1-0-0-0-59-0-0-0-0-1-3-1756343896-1756343896-1756343896-26*16-43-16-8-0-5-0-0-1-1-0-0-0-0-0-0-0-0-1-3-1756343929-1756343929-1756343929-2,"SF":no-need,"UITid":27641,"RTid":27710} TTI:Access fail
+10-28 16:24:14.909 27641 27641 I Quality : Skipped: true 1 cost 26.74095 refreshRate 16441716 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:14.940 27641 27641 I Quality : Skipped: false 1 cost 25.48564 refreshRate 16440119 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:17.147 27641 27641 I Quality : Skipped: false 1 cost 27.858175 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:17.358 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.228662979
+10-28 16:24:17.550 27641 27641 I Quality : Skipped: false 24 cost 396.53366 refreshRate 16466036 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:17.628 27641 27641 I Quality : Skipped: false 3 cost 62.552513 refreshRate 16460665 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:18.006 27641 27641 I Quality : Skipped: false 22 cost 374.97006 refreshRate 16461222 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:18.091 27641 27641 I Quality : Skipped: false 1 cost 31.55552 refreshRate 16461263 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:18.116 27641 27641 I Quality : Skipped: true 1 cost 24.33817 refreshRate 16461039 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.195 27641 27641 I Quality : Skipped: false 2 cost 39.764473 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.244 27641 27641 I Quality : Skipped: false 1 cost 24.387987 refreshRate 16445571 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.280 27641 27641 I Quality : Skipped: false 1 cost 27.664608 refreshRate 16445571 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.354 27641 27641 I Quality : Skipped: false 4 cost 68.758385 refreshRate 16463194 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.405 27641 27684 I Quality : TaskTrackInfo {"Pkg":org.kde.kdeconnect_tp.debug,"Window":org.kde.kdeconnect.ui.MainActivity,"Type":2,"Action":8,"Cost":184,"FV":16,"JC":16-67-16-8-4-25-0-0-1-0-0-0-0-10-0-0-0-0-1-6-1756350332-1756350332-1756350332-10*16-68-16-11-4-23-0-0-1-1-0-0-0-13-0-0-0-0-1-6-1756350365-1756350365-1756350365-10*16-90-65-3-0-10-0-0-1-1-0-0-0-22-0-0-0-0-1-6-1756350448-1756350448-1756350448-26*16-36-0-3-0-21-0-0-1-1-0-0-0-0-0-0-0-0-1-6-1756350464-1756350464-1756350464-2,"SF":no-need,"UITid":27641,"RTid":27710} TTI:Access fail
+10-28 16:24:21.422 27641 27641 I Quality : Skipped: false 2 cost 37.563126 refreshRate 16466346 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.457 27641 27641 I Quality : Skipped: false 1 cost 22.97362 refreshRate 16468410 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.560 27641 27641 I Quality : Skipped: false 3 cost 60.774563 refreshRate 16470428 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.595 27641 27641 I Quality : Skipped: false 1 cost 29.821892 refreshRate 16476635 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.640 27641 27641 I Quality : Skipped: false 1 cost 24.639313 refreshRate 16473372 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:21.687 27641 27641 I Quality : Skipped: false 2 cost 39.153305 refreshRate 16470813 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:22.195 27641 27641 I Quality : Skipped: false 2 cost 36.348003 refreshRate 16469030 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:22.266 27641 27641 I Quality : Skipped: true 2 cost 41.488857 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:22.300 27641 27641 I Quality : Skipped: true 1 cost 25.205421 refreshRate 16432685 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:23.839 27641 27641 I Quality : Skipped: false 1 cost 17.82472 refreshRate 16466107 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:23.905 27641 27641 I Quality : Skipped: false 3 cost 51.344025 refreshRate 16469423 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:23.969 27641 27641 I Quality : Skipped: false 2 cost 33.310417 refreshRate 16460180 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:24.003 27641 27641 I Quality : Skipped: false 1 cost 17.713171 refreshRate 16461239 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:26.606 27641 27641 I Quality : Skipped: false 1 cost 31.212564 refreshRate 16539514 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:26.849 27641 27641 I Quality : Skipped: false 1 cost 20.415625 refreshRate 16490171 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:26.884 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.91725657
+10-28 16:24:27.207 27641 27641 I Quality : Skipped: false 20 cost 340.71332 refreshRate 16482250 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:27.243 27641 27641 I Quality : Skipped: false 1 cost 31.122112 refreshRate 16465583 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:27.263 27641 27641 I Quality : Skipped: false 1 cost 18.79402 refreshRate 16465467 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:28.331 27641 27641 I Quality : Skipped: false 0 cost 3.612917 refreshRate 16500805 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:28.415 27641 27641 I Quality : Skipped: false 4 cost 67.87303 refreshRate 16496101 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:28.769 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:24:28.779 27641 27641 I Quality : Skipped: false 1 cost 20.350237 refreshRate 16473144 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:30.483 27641 27641 I Quality : Skipped: true 2 cost 44.623825 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:30.564 27641 27641 I Quality : Skipped: false 2 cost 43.888645 refreshRate 16506806 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:32.167 27641 27641 I Quality : Skipped: false 2 cost 33.956753 refreshRate 16438685 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:32.322 27641 27641 I Quality : Skipped: false 8 cost 139.7247 refreshRate 16438685 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:32.842 27641 27641 I Quality : Skipped: false 30 cost 510.71194 refreshRate 16484830 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.477 27641 27641 I Quality : Skipped: false 1 cost 18.915457 refreshRate 16460605 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.542 27641 27641 I Quality : Skipped: false 3 cost 50.686222 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.602 27641 27641 I Quality : Skipped: false 2 cost 43.857727 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.651 27641 27641 I Quality : Skipped: false 1 cost 28.759815 refreshRate 16423542 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.662 27641 27684 I Quality : TaskTrackInfo {"Pkg":org.kde.kdeconnect_tp.debug,"Window":org.kde.kdeconnect.ui.MainActivity,"Type":2,"Action":8,"Cost":196,"FV":16,"JC":16-62-16-2-4-26-0-0-1-0-0-0-0-4-0-0-0-0-1-6-1756364571-1756364571-1756364571-10*16-69-49-0-4-2-0-0-1-0-0-0-0-3-0-0-0-0-1-6-1756364638-1756364638-1756364638-10*16-55-33-10-0-1-0-0-1-1-0-0-0-46-0-0-0-0-1-6-1756364688-1756364688-1756364688-26*16-48-0-5-0-31-0-0-1-1-0-0-0-0-0-0-0-0-1-6-1756364702-1756364702-1756364702-2,"SF":no-need,"UITid":27641,"RTid":27710} TTI:Access fail
+10-28 16:24:35.693 27641 27641 I Quality : Skipped: false 1 cost 21.340803 refreshRate 16470776 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.749 27641 27641 I Quality : Skipped: false 2 cost 43.770256 refreshRate 16470281 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.786 27641 27641 I Quality : Skipped: false 1 cost 30.841064 refreshRate 16482833 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.823 27641 27641 I Quality : Skipped: false 1 cost 18.539131 refreshRate 16475737 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.875 27641 27641 I Quality : Skipped: false 2 cost 37.71683 refreshRate 16474361 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.906 27641 27641 I Quality : Skipped: true 1 cost 19.54556 refreshRate 16472130 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:35.960 27641 27641 I Quality : Skipped: false 1 cost 24.196516 refreshRate 16472106 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.007 27641 27641 I Quality : Skipped: false 1 cost 21.22378 refreshRate 16472179 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.088 27641 27641 I Quality : Skipped: false 1 cost 20.608912 refreshRate 16469300 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.130 27641 27641 I Quality : Skipped: false 1 cost 29.657791 refreshRate 16468920 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.155 27641 27641 I Quality : Skipped: false 1 cost 21.779043 refreshRate 16468349 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.401 27641 27641 I Quality : Skipped: false 1 cost 21.118828 refreshRate 16463851 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.464 27641 27641 I Quality : Skipped: false 1 cost 17.394415 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.602 27641 27641 I Quality : Skipped: false 1 cost 24.64368 refreshRate 16485073 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.717 27641 27641 I Quality : Skipped: false 1 cost 23.92416 refreshRate 16478381 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.844 27641 27641 I Quality : Skipped: false 1 cost 18.978348 refreshRate 16468579 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:36.990 27641 27641 I Quality : Skipped: false 1 cost 16.810968 refreshRate 16463009 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:37.302 27641 27641 I Quality : Skipped: true 1 cost 16.880388 refreshRate 16463155 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:38.285 27641 27641 I Quality : Skipped: false 10 cost 176.49777 refreshRate 16453682 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:38.429 27641 27641 I Quality : Skipped: false 7 cost 123.074 refreshRate 16461174 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:40.907 27641 27641 I Quality : Skipped: false 6 cost 114.73526 refreshRate 16492857 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:41.046 27641 27641 I Quality : Skipped: false 8 cost 138.80232 refreshRate 16492455 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:45.244 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:24:47.563 27641 27641 I Quality : Skipped: false 5 cost 95.945496 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:47.608 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.162174681
+10-28 16:24:47.645 27641 27641 I Quality : Skipped: false 4 cost 71.33019 refreshRate 16473314 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:48.650 27641 27641 I Quality : Skipped: false 4 cost 71.70038 refreshRate 16470088 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:50.892 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:24:50.912 27641 27641 I Quality : Skipped: false 0 cost 9.984844 refreshRate 16467270 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:51.124 27641 27641 I Quality : Skipped: false 3 cost 61.371353 refreshRate 16458941 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:52.406 27641 27641 I Quality : Skipped: false 1 cost 26.459446 refreshRate 16457627 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:53.532 27641 27641 I Quality : Skipped: false 3 cost 65.32179 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:53.567 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.148940977
+10-28 16:24:53.587 27641 27641 I Quality : Skipped: false 2 cost 38.24433 refreshRate 16462454 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:24:54.493 27641 27641 I Quality : Skipped: false 1 cost 22.880552 refreshRate 16460319 bit true processName org.kde.kdeconnect_tp.debug
+--------- beginning of main
+10-28 16:25:07.420 27641 27793 D VRI[MainActivity]: dispatchAppVisibility visible:true
+10-28 16:25:07.421 27641 27679 D VRI[MainActivity]: dispatchAppVisibility visible:true
+10-28 16:25:07.436 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:false
+10-28 16:25:07.438 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:false
+10-28 16:25:07.449 27641 27641 D KDE/BackgroundService: Start
+10-28 16:25:07.467 27641 27641 D OplusScrollToTopManager: unregisterGuidePopupDismissReceiverInSystemUI
+10-28 16:25:07.467 27641 27753 I Device  : Galaxy Tab A 2016: reloading plugins
+10-28 16:25:07.467 27641 27641 D OplusScrollToTopManager: Receiver not registered: android.view.OplusScrollToTopManager$1@76665da
+10-28 16:25:07.468 27641 27641 D OplusScrollToTopManager: unregisterSystemUIBroadcastReceiver 
+10-28 16:25:07.468 27641 27641 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@a3dfa0b
+10-28 16:25:07.468 27641 27753 D KDE/addPlugin: Permissions OK BatteryPlugin
+10-28 16:25:07.468 27641 27753 D KDE/addPlugin: Optional Permissions OK BatteryPlugin
+10-28 16:25:07.468 27641 27753 D KDE/addPlugin: Permissions OK ChatPlugin
+10-28 16:25:07.468 27641 27753 D KDE/addPlugin: Optional Permissions OK ChatPlugin
+10-28 16:25:07.469 27641 27753 D KDE/addPlugin: Permissions OK ClipboardPlugin
+10-28 16:25:07.469 27641 27753 D KDE/addPlugin: Optional Permissions OK ClipboardPlugin
+10-28 16:25:07.469 27641 27753 D KDE/addPlugin: No permission ConnectivityReportPlugin
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: No permission ContactsPlugin
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: Permissions OK FindMyPhonePlugin
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: Optional Permissions OK FindMyPhonePlugin
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: Permissions OK FindRemoteDevicePlugin
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: Optional Permissions OK FindRemoteDevicePlugin
+10-28 16:25:07.470 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: Permissions OK InputDevicesReceiverPlugin
+10-28 16:25:07.470 27641 27753 D KDE/addPlugin: Optional Permissions OK InputDevicesReceiverPlugin
+10-28 16:25:07.471 27641 27753 D KDE/addPlugin: Permissions OK MousePadPlugin
+10-28 16:25:07.471 27641 27753 D KDE/addPlugin: Optional Permissions OK MousePadPlugin
+10-28 16:25:07.471 27641 27753 D KDE/addPlugin: No permission MouseReceiverPlugin
+10-28 16:25:07.471 27641 27753 D KDE/addPlugin: Permissions OK MprisPlugin
+10-28 16:25:07.471 27641 27753 D KDE/addPlugin: Optional Permissions OK MprisPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: No permission MprisReceiverPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: No permission NotificationsPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: Permissions OK PingPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: Optional Permissions OK PingPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: Permissions OK PresenterPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: Optional Permissions OK PresenterPlugin
+10-28 16:25:07.472 27641 27753 D KDE/addPlugin: Permissions OK RemoteBrowsePlugin
+10-28 16:25:07.473 27641 27753 D KDE/addPlugin: Optional Permissions OK RemoteBrowsePlugin
+10-28 16:25:07.474 27641 27753 D KDE/addPlugin: No permission RemoteKeyboardPlugin
+10-28 16:25:07.476 27641 27753 D KDE/addPlugin: No permission RemoteKeyboardIMEPlugin
+10-28 16:25:07.476 27641 27753 D KDE/addPlugin: Permissions OK RunCommandPlugin
+10-28 16:25:07.480 27641 27753 D KDE/addPlugin: Optional Permissions OK RunCommandPlugin
+10-28 16:25:07.483 27641 27753 D KDE/addPlugin: Permissions OK SftpPlugin
+10-28 16:25:07.483 27641 27753 D KDE/addPlugin: Optional Permissions OK SftpPlugin
+10-28 16:25:07.484 27641 27753 D KDE/addPlugin: Permissions OK SharePlugin
+10-28 16:25:07.484 27641 27753 D KDE/addPlugin: Optional Permissions OK SharePlugin
+10-28 16:25:07.484 27641 27753 D KDE/addPlugin: No permission SMSPlugin
+10-28 16:25:07.485 27641 27753 D KDE/addPlugin: Permissions OK SystemVolumePlugin
+10-28 16:25:07.485 27641 27753 D KDE/addPlugin: Optional Permissions OK SystemVolumePlugin
+10-28 16:25:07.485 27641 27753 D KDE/addPlugin: No permission TelephonyPlugin
+10-28 16:25:07.485 27641 27753 I Device  : Galaxy Tab A 2016: reloading plugins
+10-28 16:25:07.489 27641 27641 I Quality : Skipped: false 0 cost 7.13349 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:25:07.510 27641 27641 D BufferQueueConsumer: [](id:6bf900000008,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:25:07.510 27641 27641 E IPCThreadState: attemptIncStrongHandle(99): Not supported
+10-28 16:25:07.510 27641 27641 E IPCThreadState: attemptIncStrongHandle(70): Not supported
+10-28 16:25:07.514 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#8(BLAST Consumer)8](id:6bf900000008,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:25:07.536 27641 27641 D VRI[MainActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:25:07.556 27641 27710 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:25:07.557 27641 27641 D VRI[MainActivity]: draw finished.
+10-28 16:25:07.558 27641 27641 D KDE/BackgroundService: onStartCommand
+10-28 16:25:07.638 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:25:07.665 27641 27641 I Quality : Skipped: false 1 cost 25.271973 refreshRate 16474491 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:03.814 27641 27783 W MdnsDiscovery: Service lost: name: 2642ba1dc1154a8eb46f136345a4a13a, type: _kdeconnect._udp., subtypes: , hostAddresses: , hostname: null, port: 0, network: 302, expirationTime: 2026-10-28T13:26:03Z, txtRecord: {}
+10-28 16:26:07.784 27641 28284 D VRI[MainActivity]: dispatchAppVisibility visible:false
+10-28 16:26:07.810 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:26:07.847 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#8(BLAST Consumer)8](id:6bf900000008,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:07.868 27641 27641 D BufferQueueConsumer: [VRI[MainActivity]#8(BLAST Consumer)8](id:6bf900000008,api:0,p:-1,c:27641) disconnect
+10-28 16:26:07.871 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:true
+10-28 16:26:07.889 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:07.890 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:12.733 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:12.746 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:13.816 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:13.819 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:18.087 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:18.089 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:19.138 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:19.142 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:26.847 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:26.850 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:27.079 27641 27783 D MdnsDiscovery: Service discovered: name: 2642ba1dc1154a8eb46f136345a4a13a, type: _kdeconnect._udp., subtypes: , hostAddresses: , hostname: null, port: 0, network: 302, expirationTime: 2026-10-28T13:28:27Z, txtRecord: {}
+10-28 16:26:27.079 27641 27783 I MdnsDiscovery: MDNS discovered 2642ba1dc1154a8eb46f136345a4a13a to which I'm already connected to. Ignoring.
+10-28 16:26:27.388 27641 27641 D KDE/BackgroundService: ForceRefreshConnections
+10-28 16:26:27.397 27641 27641 D KDE/BackgroundService: onStartCommand
+10-28 16:26:27.418 27641 27641 D KDE/BackgroundService: onNetworkChange
+10-28 16:26:27.423 27641 27783 I MdnsDiscovery: MDNS discovery stopped: _kdeconnect._udp
+10-28 16:26:27.443 27641 27783 I MdnsDiscovery: Service discovery started: _kdeconnect._udp
+10-28 16:26:27.443 27641 27783 D MdnsDiscovery: Service discovered: name: 6d07473bbd00447dac28d551c9b59136, type: _kdeconnect._udp., subtypes: , hostAddresses: , hostname: null, port: 0, network: 302, expirationTime: 2026-10-28T13:27:11Z, txtRecord: {}
+10-28 16:26:27.444 27641 27783 I MdnsDiscovery: MDNS discovered 6d07473bbd00447dac28d551c9b59136 to which I'm already connected to. Ignoring.
+10-28 16:26:27.444 27641 27783 D MdnsDiscovery: Service discovered: name: 51a5c57c5c434189a4dac828ebe92aea, type: _kdeconnect._udp., subtypes: , hostAddresses: , hostname: null, port: 0, network: 302, expirationTime: 2026-10-28T13:27:23Z, txtRecord: {}
+10-28 16:26:27.444 27641 27783 D MdnsDiscovery: Discovered myself, ignoring.
+10-28 16:26:27.445 27641 27783 D MdnsDiscovery: Service discovered: name: 2642ba1dc1154a8eb46f136345a4a13a, type: _kdeconnect._udp., subtypes: , hostAddresses: , hostname: null, port: 0, network: 302, expirationTime: 2026-10-28T13:28:27Z, txtRecord: {}
+10-28 16:26:27.445 27641 27783 I MdnsDiscovery: MDNS discovered 2642ba1dc1154a8eb46f136345a4a13a to which I'm already connected to. Ignoring.
+10-28 16:26:27.458 27641 27641 I BluetoothLinkProvider: onNetworkChange called
+10-28 16:26:27.467 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@3acbc8e
+10-28 16:26:27.467 27641 27641 D ViewRootImplExtImpl: onDisplayChanged 0 for VRI android.view.ViewRootImpl@a061404
+10-28 16:26:28.129 27641 28568 I LanLinkProvider: Discarding second TCP packet from the same ip /192.168.1.4 received too quickly
+10-28 16:26:28.180 27641 28574 I KDE/LanLinkProvider: identity packet received from a TCP connection from Galaxy Tab A 2016
+10-28 16:26:28.181 27641 28574 I KDE/LanLinkProvider: Starting SSL handshake with 6d07473bbd00447dac28d551c9b59136 trusted:true
+10-28 16:26:28.233 27641 28574 D LanLinkProvider: Starting handshake
+10-28 16:26:28.433 27641 28574 D LanLinkProvider: Handshake done
+10-28 16:26:28.492 27641 28568 I KDE/LanLinkProvider: Handshake as client successful with Galaxy Tab A 2016 secured with TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+10-28 16:26:28.492 27641 28568 D KDE/LanLinkProvider: Reusing same link for device 6d07473bbd00447dac28d551c9b59136
+10-28 16:26:28.494 27641 27746 I LanLink : Socket closed: 128239605. Reason: Socket closed
+10-28 16:26:31.594 27641 28284 D VRI[MainActivity]: dispatchAppVisibility visible:true
+10-28 16:26:31.601 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:false
+10-28 16:26:31.604 27641 27641 D KDE/BackgroundService: Start
+10-28 16:26:31.627 27641 27641 I Quality : Skipped: false 0 cost 4.837917 refreshRate 16610607 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:31.638 27641 27641 D BufferQueueConsumer: [](id:6bf900000009,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:31.640 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#9(BLAST Consumer)9](id:6bf900000009,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:31.710 27641 27641 D KDE/BackgroundService: onStartCommand
+10-28 16:26:31.718 27641 27641 I Quality : Skipped: false 1 cost 27.283524 refreshRate 16591407 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:31.953 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:34.013 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:34.013 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:34.013 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:34.021 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:34.022 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:34.022 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:34.047 27641 27641 D WindowManager: Add to mViews: DecorView@fb66a24[MainActivity],pkg= org.kde.kdeconnect_tp.debug
+10-28 16:26:34.064 27641 27641 D ViewRootImplExtImpl: onDisplayChanged -1 for VRI android.view.ViewRootImpl@c83a353
+10-28 16:26:34.065 27641 27641 D InputEventReceiver: Input log is disabled
+10-28 16:26:34.076 27641 27641 I Quality : Skipped: false 5 cost 94.017265 refreshRate 16595125 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:34.107 27641 27641 D BufferQueueConsumer: [](id:6bf90000000a,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:34.108 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.263612964
+10-28 16:26:34.111 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#10(BLAST Consumer)10](id:6bf90000000a,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:34.117 27641 27641 D VRI[MainActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:34.128 27641 27710 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:34.129 27641 27710 W Parcel  : Expecting binder but got null!
+10-28 16:26:34.130 27641 27641 D VRI[MainActivity]: draw finished.
+10-28 16:26:34.141 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:26:34.145 27641 27641 I Quality : Skipped: false 3 cost 63.71689 refreshRate 16595953 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:34.176 27641 27641 D VRI[MainActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:34.180 27641 27710 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=3 didProduceBuffer=true syncBuffer=false
+10-28 16:26:34.180 27641 27641 D VRI[MainActivity]: draw finished.
+10-28 16:26:34.181 27641 27641 I Quality : Skipped: false 1 cost 17.365686 refreshRate 16595828 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:34.211 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:34.882 27641 27641 D OplusScrollToTopManager: unregisterGuidePopupDismissReceiverInSystemUI
+10-28 16:26:34.882 27641 27641 D OplusScrollToTopManager: Receiver not registered: android.view.OplusScrollToTopManager$1@9eb238f
+10-28 16:26:34.882 27641 27641 D OplusScrollToTopManager: unregisterSystemUIBroadcastReceiver 
+10-28 16:26:34.882 27641 27641 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@d8de61c
+10-28 16:26:34.889 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:26:34.891 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#10(BLAST Consumer)10](id:6bf90000000a,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:34.892 27641 27641 D BufferQueueConsumer: [VRI[MainActivity]#10(BLAST Consumer)10](id:6bf90000000a,api:0,p:-1,c:27641) disconnect
+10-28 16:26:34.908 27641 27641 W InputEventReceiver: Attempted to finish an input event but the input event receiver has already been disposed.
+10-28 16:26:34.925 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:41.128 27641 27641 D WindowManager: Add to mViews: android.widget.PopupWindow$PopupDecorView{41b804e V.E...... R.....I. 0,0-0,0},pkg= org.kde.kdeconnect_tp.debug
+10-28 16:26:41.138 27641 27641 D ViewRootImplExtImpl: onDisplayChanged -1 for VRI android.view.ViewRootImpl@6c52705
+10-28 16:26:41.139 27641 27641 D InputEventReceiver: Input log is disabled
+10-28 16:26:41.161 27641 27641 I Quality : Skipped: false 3 cost 60.05825 refreshRate 16513085 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:41.172 27641 27641 D BufferQueueConsumer: [](id:6bf90000000b,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:41.173 27641 27641 E IPCThreadState: attemptIncStrongHandle(102): Not supported
+10-28 16:26:41.177 27641 27710 D BufferQueueProducer: [VRI[PopupWindow:676df49]#11(BLAST Consumer)11](id:6bf90000000b,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:41.245 27641 27641 D VRI[PopupWindow:676df49]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:41.253 27641 27710 D VRI[PopupWindow:676df49]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:41.254 27641 27710 W Parcel  : Expecting binder but got null!
+10-28 16:26:41.254 27641 27641 D VRI[PopupWindow:676df49]: draw finished.
+10-28 16:26:41.254 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:26:41.260 27641 27641 I Quality : Skipped: false 5 cost 92.20076 refreshRate 16598780 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:41.270 27641 27641 D VRI[PopupWindow:676df49]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:41.273 27641 27710 D VRI[PopupWindow:676df49]: Received frameCommittedCallback lastAttemptedDrawFrameNum=2 didProduceBuffer=true syncBuffer=false
+10-28 16:26:41.273 27641 27641 D VRI[PopupWindow:676df49]: draw finished.
+10-28 16:26:41.276 27641 27641 D VRI[PopupWindow:676df49]: onFocusEvent true
+10-28 16:26:42.108 27641 27641 I ChatPlugin: Opened Chat on device: Galaxy Tab A 2016
+10-28 16:26:42.168 27641 27641 D VRI[PopupWindow:676df49]: onFocusEvent false
+10-28 16:26:42.168 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:42.300 27641 27641 D OplusScrollToTopManager: unregisterGuidePopupDismissReceiverInSystemUI
+10-28 16:26:42.300 27641 27641 D OplusScrollToTopManager: Receiver not registered: android.view.OplusScrollToTopManager$1@2cbaf27
+10-28 16:26:42.300 27641 27641 D OplusScrollToTopManager: unregisterSystemUIBroadcastReceiver 
+10-28 16:26:42.300 27641 27641 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@f41a5d4
+10-28 16:26:42.305 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:26:42.308 27641 27710 D BufferQueueProducer: [VRI[PopupWindow:676df49]#11(BLAST Consumer)11](id:6bf90000000b,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:42.310 27641 27710 D OpenGLRenderer: endAllActiveAnimators on 0xb400007d9000d000 (MenuPopupWindow$MenuDropDownListView) with handle 0xb400007d10f9c300
+10-28 16:26:42.310 27641 27641 D BufferQueueConsumer: [VRI[PopupWindow:676df49]#11(BLAST Consumer)11](id:6bf90000000b,api:0,p:-1,c:27641) disconnect
+10-28 16:26:44.807 27641 27641 D WindowManager: Add to mViews: android.widget.PopupWindow$PopupDecorView{d914258 V.E...... R.....I. 0,0-0,0},pkg= org.kde.kdeconnect_tp.debug
+10-28 16:26:44.815 27641 27641 D ViewRootImplExtImpl: onDisplayChanged -1 for VRI android.view.ViewRootImpl@68b017
+10-28 16:26:44.815 27641 27641 D InputEventReceiver: Input log is disabled
+10-28 16:26:44.837 27641 27641 I Quality : Skipped: false 2 cost 46.946587 refreshRate 16632200 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:44.849 27641 27641 D BufferQueueConsumer: [](id:6bf90000000c,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:44.849 27641 27641 E IPCThreadState: attemptIncStrongHandle(87): Not supported
+10-28 16:26:44.853 27641 27710 D BufferQueueProducer: [VRI[PopupWindow:459b3b]#12(BLAST Consumer)12](id:6bf90000000c,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:44.922 27641 27641 D VRI[PopupWindow:459b3b]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:44.928 27641 27710 D VRI[PopupWindow:459b3b]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:44.929 27641 27710 W Parcel  : Expecting binder but got null!
+10-28 16:26:44.929 27641 27641 D VRI[PopupWindow:459b3b]: draw finished.
+10-28 16:26:44.930 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:26:44.932 27641 27641 I Quality : Skipped: false 4 cost 78.6845 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:44.933 27641 27641 D VRI[PopupWindow:459b3b]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:44.950 27641 27710 D VRI[PopupWindow:459b3b]: Received frameCommittedCallback lastAttemptedDrawFrameNum=2 didProduceBuffer=true syncBuffer=false
+10-28 16:26:44.950 27641 27710 D VRI[PopupWindow:459b3b]: draw finished.
+10-28 16:26:44.960 27641 27641 D VRI[PopupWindow:459b3b]: onFocusEvent true
+10-28 16:26:46.338 27641 27641 I RemoteBrowsePlugin: Opened Remote File Browser on device: Galaxy Tab A 2016
+10-28 16:26:46.402 27641 27641 D VRI[PopupWindow:459b3b]: onFocusEvent false
+10-28 16:26:46.402 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:46.532 27641 27641 D OplusScrollToTopManager: unregisterGuidePopupDismissReceiverInSystemUI
+10-28 16:26:46.532 27641 27641 D OplusScrollToTopManager: Receiver not registered: android.view.OplusScrollToTopManager$1@8a1a130
+10-28 16:26:46.532 27641 27641 D OplusScrollToTopManager: unregisterSystemUIBroadcastReceiver 
+10-28 16:26:46.533 27641 27641 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@70e71a9
+10-28 16:26:46.537 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:26:46.540 27641 27710 D BufferQueueProducer: [VRI[PopupWindow:459b3b]#12(BLAST Consumer)12](id:6bf90000000c,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:46.541 27641 27710 D OpenGLRenderer: endAllActiveAnimators on 0xb400007cfc4e1000 (MenuPopupWindow$MenuDropDownListView) with handle 0xb400007d10ff32a0
+10-28 16:26:46.541 27641 27641 D BufferQueueConsumer: [VRI[PopupWindow:459b3b]#12(BLAST Consumer)12](id:6bf90000000c,api:0,p:-1,c:27641) disconnect
+10-28 16:26:49.286 27641 27641 I Quality : Skipped: false 2 cost 34.025116 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:49.400 27641 27641 D WindowManager: Add to mViews: DecorView@c427cbc[SendFileActivity],pkg= org.kde.kdeconnect_tp.debug
+10-28 16:26:49.407 27641 27641 D ViewRootImplExtImpl: onDisplayChanged -1 for VRI android.view.ViewRootImpl@d6c68cb
+10-28 16:26:49.408 27641 27641 D InputEventReceiver: Input log is disabled
+10-28 16:26:49.410 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:26:49.412 27641 27641 I Quality : Skipped: false 0 cost 16.23599 refreshRate 16538657 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:49.428 27641 27641 D BufferQueueConsumer: [](id:6bf90000000d,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:49.429 27641 27641 E IPCThreadState: attemptIncStrongHandle(93): Not supported
+10-28 16:26:49.430 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.205683900
+10-28 16:26:49.431 27641 27710 D BufferQueueProducer: [VRI[SendFileActivity]#13(BLAST Consumer)13](id:6bf90000000d,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:49.432 27641 27641 D VRI[SendFileActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:49.437 27641 27710 D VRI[SendFileActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:49.437 27641 27710 W Parcel  : Expecting binder but got null!
+10-28 16:26:49.438 27641 27641 D VRI[SendFileActivity]: draw finished.
+10-28 16:26:49.470 27641 27641 D VRI[SendFileActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:49.472 27641 27710 D VRI[SendFileActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=2 didProduceBuffer=true syncBuffer=false
+10-28 16:26:49.473 27641 27641 D VRI[SendFileActivity]: draw finished.
+10-28 16:26:49.984 27641 27641 D VRI[SendFileActivity]: setWindowStopped stopped:true
+10-28 16:26:50.000 27641 27710 D BufferQueueProducer: [VRI[SendFileActivity]#13(BLAST Consumer)13](id:6bf90000000d,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:50.001 27641 27710 D BufferQueueConsumer: [VRI[SendFileActivity]#13(BLAST Consumer)13](id:6bf90000000d,api:0,p:-1,c:27641) disconnect
+10-28 16:26:50.028 27641 27793 D VRI[SendFileActivity]: dispatchAppVisibility visible:false
+10-28 16:26:50.334 27641 27793 D VRI[MainActivity]: dispatchAppVisibility visible:false
+10-28 16:26:50.349 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#9(BLAST Consumer)9](id:6bf900000009,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:50.362 27641 27641 D BufferQueueConsumer: [VRI[MainActivity]#9(BLAST Consumer)9](id:6bf900000009,api:0,p:-1,c:27641) disconnect
+10-28 16:26:50.953 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:true
+10-28 16:26:51.843 27641 27811 D VRI[SendFileActivity]: dispatchAppVisibility visible:true
+10-28 16:26:51.855 27641 27641 D VRI[SendFileActivity]: setWindowStopped stopped:false
+10-28 16:26:51.880 27641 27641 D BufferQueueConsumer: [](id:6bf90000000e,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:51.881 27641 27641 E IPCThreadState: attemptIncStrongHandle(99): Not supported
+10-28 16:26:51.881 27641 27641 E IPCThreadState: attemptIncStrongHandle(73): Not supported
+10-28 16:26:51.885 27641 27641 D VRI[SendFileActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:51.885 27641 27710 D BufferQueueProducer: [VRI[SendFileActivity]#14(BLAST Consumer)14](id:6bf90000000e,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:51.894 27641 27710 D VRI[SendFileActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:51.895 27641 27641 D VRI[SendFileActivity]: draw finished.
+10-28 16:26:51.903 27641 27811 D VRI[MainActivity]: dispatchAppVisibility visible:true
+10-28 16:26:51.918 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:false
+10-28 16:26:51.921 27641 27641 D KDE/BackgroundService: Start
+10-28 16:26:51.950 27641 27641 D BufferQueueConsumer: [](id:6bf90000000f,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:51.953 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#15(BLAST Consumer)15](id:6bf90000000f,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:51.981 27641 27641 D VRI[MainActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:52.006 27641 27710 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:52.007 27641 27641 D VRI[MainActivity]: draw finished.
+10-28 16:26:52.008 27641 27641 D KDE/BackgroundService: onStartCommand
+10-28 16:26:52.034 27641 27641 D VRI[SendFileActivity]: setWindowStopped stopped:true
+10-28 16:26:52.038 27641 27641 D OplusScrollToTopManager: unregisterGuidePopupDismissReceiverInSystemUI
+10-28 16:26:52.038 27641 27641 D OplusScrollToTopManager: Receiver not registered: android.view.OplusScrollToTopManager$1@b1089a2
+10-28 16:26:52.039 27641 27641 D OplusScrollToTopManager: unregisterSystemUIBroadcastReceiver 
+10-28 16:26:52.039 27641 27641 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@5462633
+10-28 16:26:52.039 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:26:52.041 27641 27710 D BufferQueueProducer: [VRI[SendFileActivity]#14(BLAST Consumer)14](id:6bf90000000e,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:52.042 27641 27710 D BufferQueueConsumer: [VRI[SendFileActivity]#14(BLAST Consumer)14](id:6bf90000000e,api:0,p:-1,c:27641) disconnect
+10-28 16:26:52.127 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:52.960 27641 27641 I Quality : Skipped: false 1 cost 23.925407 refreshRate 16601217 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:57.964 27641 27641 I Quality : Skipped: false 2 cost 33.41757 refreshRate 16571043 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:58.042 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:58.042 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:58.043 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:58.048 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:58.048 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:58.048 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:26:58.081 27641 27641 D WindowManager: Add to mViews: DecorView@61b0b2d[MprisActivity],pkg= org.kde.kdeconnect_tp.debug
+10-28 16:26:58.088 27641 27641 D ViewRootImplExtImpl: onDisplayChanged -1 for VRI android.view.ViewRootImpl@9511ab0
+10-28 16:26:58.089 27641 27641 D InputEventReceiver: Input log is disabled
+10-28 16:26:58.091 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:26:58.093 27641 27641 I Quality : Skipped: false 0 cost 16.281303 refreshRate 16591109 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:58.116 27641 27641 D BufferQueueConsumer: [](id:6bf900000010,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:58.116 27641 27641 E IPCThreadState: attemptIncStrongHandle(66): Not supported
+10-28 16:26:58.118 27641 27641 V ZoomWindowDecorView: setLastReportedMergedConfiguration mZoomDisplayHeight: 2400 getDecorView.102435629
+10-28 16:26:58.124 27641 27710 D BufferQueueProducer: [VRI[MprisActivity]#16(BLAST Consumer)16](id:6bf900000010,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:58.226 27641 27641 I MprisNowPlayingFragment: No `targetPlayer` specified in savedInstanceState
+10-28 16:26:58.244 27641 27641 D VRI[MprisActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:58.271 27641 27710 D VRI[MprisActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:58.271 27641 27710 W Parcel  : Expecting binder but got null!
+10-28 16:26:58.272 27641 27641 D VRI[MprisActivity]: draw finished.
+10-28 16:26:58.282 27641 27641 I Quality : Skipped: false 11 cost 184.41907 refreshRate 16596246 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:58.315 27641 27641 D VRI[MprisActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:58.321 27641 27710 D VRI[MprisActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=3 didProduceBuffer=true syncBuffer=false
+10-28 16:26:58.321 27641 27641 D VRI[MprisActivity]: draw finished.
+10-28 16:26:58.332 27641 28284 I Quality : JankCountInfo: org.kde.kdeconnect.ui.MainActivity basic:0-0-0 action:-1 data:0-1 type:2 stage:4-3-0 action:0 data:0-0 type:2 stage:2-1-0 action:1 data:0-0 type:2 stage:6-2-0 type:3 stage:5-0-0 type:4 stage:2-0-0 type:5 stage:1-0-0 action:2 data:0-0 type:2 stage:25-2-0 type:3 stage:7-2-0 type:5 stage:1-0-0 action:6 data:0-2 type:2 stage:2-0-0 type:6 stage:1-0-0 action:8 data:9-1 type:2 stage:42-0-0 type:3 stage:5-0-0 type:4 stage:1-0-0
+10-28 16:26:58.385 27641 27641 D VRI[MprisActivity]: onFocusEvent true
+10-28 16:26:58.565 27641 28284 D VRI[MainActivity]: dispatchAppVisibility visible:false
+10-28 16:26:58.582 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#15(BLAST Consumer)15](id:6bf90000000f,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:58.591 27641 27641 D BufferQueueConsumer: [VRI[MainActivity]#15(BLAST Consumer)15](id:6bf90000000f,api:0,p:-1,c:27641) disconnect
+10-28 16:26:58.593 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:true
+10-28 16:26:58.986 27641 27641 D OplusSystemUINavigationGesture: [GESTURE_BUTTON] swipe from 0
+10-28 16:26:58.986 27641 27641 D OplusSystemUINavigationGesture: [GESTURE_BUTTON] Hit Gesture Region !
+10-28 16:26:59.103 27641 27641 D Activity: dispatchKeyEvent to android.app.Activity$2@1ca2d29 will call navigateBack
+10-28 16:26:59.111 27641 27691 D VRI[MainActivity]: dispatchAppVisibility visible:true
+10-28 16:26:59.135 27641 27641 D VRI[MprisActivity]: onFocusEvent false
+10-28 16:26:59.136 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:false
+10-28 16:26:59.143 27641 27641 D KDE/BackgroundService: Start
+10-28 16:26:59.164 27641 27641 I Quality : Skipped: false 0 cost 8.1380205 refreshRate 16602916 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:26:59.177 27641 27641 D BufferQueueConsumer: [](id:6bf900000011,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:26:59.177 27641 27641 E IPCThreadState: attemptIncStrongHandle(73): Not supported
+10-28 16:26:59.180 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#17(BLAST Consumer)17](id:6bf900000011,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:26:59.199 27641 27641 D VRI[MainActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:26:59.217 27641 27710 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:26:59.218 27641 27641 D VRI[MainActivity]: draw finished.
+10-28 16:26:59.223 27641 27641 D KDE/BackgroundService: onStartCommand
+10-28 16:26:59.361 27641 27641 D VRI[MainActivity]: onFocusEvent true
+10-28 16:26:59.549 27641 27691 D VRI[MprisActivity]: dispatchAppVisibility visible:false
+10-28 16:26:59.562 27641 27710 D BufferQueueProducer: [VRI[MprisActivity]#16(BLAST Consumer)16](id:6bf900000010,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:26:59.578 27641 27641 D BufferQueueConsumer: [VRI[MprisActivity]#16(BLAST Consumer)16](id:6bf900000010,api:0,p:-1,c:27641) disconnect
+10-28 16:26:59.582 27641 27641 D VRI[MprisActivity]: setWindowStopped stopped:true
+10-28 16:26:59.589 27641 27641 D OplusScrollToTopManager: unregisterGuidePopupDismissReceiverInSystemUI
+10-28 16:26:59.589 27641 27641 D OplusScrollToTopManager: Receiver not registered: android.view.OplusScrollToTopManager$1@d3b0533
+10-28 16:26:59.589 27641 27641 D OplusScrollToTopManager: unregisterSystemUIBroadcastReceiver 
+10-28 16:26:59.589 27641 27641 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@628f0f0
+10-28 16:26:59.594 27641 27641 V ZoomWindowDecorView: removeZoomView
+10-28 16:27:01.206 27641 27641 D OplusSystemUINavigationGesture: [GESTURE_SIDE_BAR] swipe from 0
+10-28 16:27:01.206 27641 27641 D OplusSystemUINavigationGesture: [GESTURE_SIDE_BAR] Hit Side Bar Region !
+10-28 16:27:02.713 27641 27641 I Quality : Skipped: false 2 cost 33.463673 refreshRate 16612002 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:27:02.815 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:27:02.815 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:27:02.815 27641 27641 I oplus.android.OplusFrameworkFactoryImpl: get feature:IOplusDynamicVsyncFeature
+10-28 16:27:02.855 27641 27641 I Quality : Skipped: false 7 cost 125.85725 refreshRate 16666666 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:27:03.044 27641 27641 I Quality : Skipped: false 10 cost 182.48604 refreshRate 16621586 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:27:12.500 27641 27641 I Quality : Skipped: false 2 cost 45.551983 refreshRate 16597914 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:27:12.543 27641 27641 D VRI[MainActivity]: onFocusEvent false
+10-28 16:27:13.074 27641 28284 D VRI[MainActivity]: dispatchAppVisibility visible:false
+10-28 16:27:13.088 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#17(BLAST Consumer)17](id:6bf900000011,api:1,p:27641,c:27641) disconnect: api 1
+10-28 16:27:13.103 27641 27641 D BufferQueueConsumer: [VRI[MainActivity]#17(BLAST Consumer)17](id:6bf900000011,api:0,p:-1,c:27641) disconnect
+10-28 16:27:13.105 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:true
+10-28 16:27:15.937 27641 28284 D VRI[MainActivity]: dispatchAppVisibility visible:true
+10-28 16:27:15.954 27641 27641 D VRI[MainActivity]: setWindowStopped stopped:false
+10-28 16:27:15.967 27641 27641 D KDE/BackgroundService: Start
+10-28 16:27:16.003 27641 27641 I Quality : Skipped: false 0 cost 2.561302 refreshRate 16593093 bit true processName org.kde.kdeconnect_tp.debug
+10-28 16:27:16.018 27641 27641 D BufferQueueConsumer: [](id:6bf900000012,api:0,p:-1,c:27641) connect: controlledByApp=false
+10-28 16:27:16.019 27641 27641 E IPCThreadState: attemptIncStrongHandle(103): Not supported
+10-28 16:27:16.019 27641 27641 E IPCThreadState: attemptIncStrongHandle(109): Not supported
+10-28 16:27:16.023 27641 27710 D BufferQueueProducer: [VRI[MainActivity]#18(BLAST Consumer)18](id:6bf900000012,api:1,p:27641,c:27641) connect: api=1 producerControlledByApp=true
+10-28 16:27:16.051 27641 27641 D VRI[MainActivity]: registerCallbacksForSync syncBuffer=false
+10-28 16:27:16.060 27641 27710 D VRI[MainActivity]: Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
+10-28 16:27:16.061 27641 27641 D VRI[MainActivity]: draw finished.
+10-28 16:27:16.062 27641 27641 D KDE/BackgroundService: onStartCommand
