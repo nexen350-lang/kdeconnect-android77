@@ -34,6 +34,13 @@ cp -r src/main/java/org/kde/kdeconnect/plugins/chat/* "$TEMP_DIR/src/main/java/o
 # Copy GitHub Actions CI/CD with automatic Release publication
 cp .github/workflows/android-build-apk.yml "$TEMP_DIR/.github/workflows/android-build-apk.yml"
 
+# Configure Gradle properties and SDK compatibility
+echo "android.builder.sdkDownload=true" >> "$TEMP_DIR/gradle.properties"
+if grep -q "compileSdk = 37" "$TEMP_DIR/build.gradle.kts" 2>/dev/null; then
+    sed -i 's/compileSdk = 37/compileSdk = 35/g' "$TEMP_DIR/build.gradle.kts"
+    sed -i 's/targetSdk = 37/targetSdk = 35/g' "$TEMP_DIR/build.gradle.kts"
+fi
+
 echo "==> Step 3: Setting remote to $TARGET_REPO and pushing..."
 cd "$TEMP_DIR"
 git remote set-url origin "$TARGET_REPO"

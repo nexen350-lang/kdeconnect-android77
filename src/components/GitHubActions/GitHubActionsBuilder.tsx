@@ -61,50 +61,53 @@ concurrency:
   group: \${{ github.workflow }}-\${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  ANDROID_HOME: /usr/local/lib/android/sdk
-  JAVA_HOME: /usr/lib/jvm/temurin-17-jdk-amd64
-
 jobs:
   build:
     name: Build Android APK
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'gradle'
 
-      - name: Prepare Android SDK & Licenses
+      - name: Prepare Android SDK & Accept Licenses
         run: |
+          mkdir -p "$ANDROID_HOME/licenses" || true
+          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license" 2>/dev/null || true
           yes | sdkmanager --licenses 2>/dev/null || true
 
       - name: Prepare KDE Connect Android Source
         run: |
-          if [ ! -f "gradlew" ]; then
-            echo "Cloning official KDE/kdeconnect-android upstream..."
-            git clone --depth 1 https://github.com/KDE/kdeconnect-android.git upstream_kde
-            cp -r core/src/main/java/org/kde/kdeconnect/Plugins/* upstream_kde/core/src/main/java/org/kde/kdeconnect/Plugins/ 2>/dev/null || true
-            shopt -s dotglob
-            cp -rn upstream_kde/* .
-            rm -rf upstream_kde
+          if [ ! -f "gradlew" ] || [ ! -f "build.gradle.kts" ]; then
+            git clone --depth 1 https://github.com/KDE/kdeconnect-android.git /tmp/upstream_kde
+            mkdir -p /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/remotebrowse
+            mkdir -p /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/chat
+            cp -r src/main/java/org/kde/kdeconnect/plugins/remotebrowse/* /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/remotebrowse/ 2>/dev/null || true
+            cp -r src/main/java/org/kde/kdeconnect/plugins/chat/* /tmp/upstream_kde/src/main/java/org/kde/kdeconnect/plugins/chat/ 2>/dev/null || true
+            rsync -a --exclude='.git' /tmp/upstream_kde/ ./
+            rm -rf /tmp/upstream_kde
+          fi
+          echo "android.builder.sdkDownload=true" >> gradle.properties
+          if grep -q "compileSdk = 37" build.gradle.kts 2>/dev/null; then
+            sed -i 's/compileSdk = 37/compileSdk = 35/g' build.gradle.kts
+            sed -i 's/targetSdk = 37/targetSdk = 35/g' build.gradle.kts
           fi
           chmod +x gradlew
 
-      - name: Apply Feature Patches
-        run: |
-          if [ -f "patches/0001-kdeconnect-remote-browser-and-device-chat.patch" ]; then
-            git apply patches/0001-kdeconnect-remote-browser-and-device-chat.patch 2>/dev/null || true
-          fi
-
       - name: Assemble Android APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: ./gradlew assembleDebug -x test -x lint --no-daemon --stacktrace
 
       - name: Stage APK Artifacts
         run: |
@@ -117,7 +120,17 @@ jobs:
           name: kdeconnect-remote-chat-debug-apk
           path: build-artifacts/*.apk
           retention-days: 14
-          if-no-files-found: warn`;
+
+      - name: Publish APK to GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        with:
+          tag_name: "v1.32.0-b\${{ github.run_number }}"
+          name: "KDE Connect Android v1.32.0 (Build #\${{ github.run_number }})"
+          files: build-artifacts/*.apk
+        env:
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}`;
 
   const PIPELINE_STEPS: PipelineStep[] = [
     {

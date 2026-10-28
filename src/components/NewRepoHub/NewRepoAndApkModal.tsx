@@ -142,11 +142,18 @@ ${f.code}
             <div className="bg-purple-950/30 border border-purple-500/30 p-3 rounded-xl space-y-1.5">
               <div className="flex items-center gap-2 font-bold text-purple-300">
                 <Sparkles className="w-4 h-4 text-purple-400" />
-                <span>النشر التلقائي في قسم Releases على GitHub:</span>
+                <span>نشر الـ APK تلقائياً في Releases على GitHub:</span>
               </div>
               <p className="text-[11px] text-slate-400 leading-relaxed">
-                تم ضبط ملف الـ Workflow ليقوم بخطوة <code className="text-purple-300 font-mono">softprops/action-gh-release@v2</code> تلقائياً؛ فور انتهاء عملية البناء، سيتم إنشاء <strong>GitHub Release</strong> جديد برقم الإصدار <code className="text-emerald-300 font-mono">v1.32.0</code> وستجد ملف الـ APK مرفقاً ومتاحاً للتحميل المباشر تحت تبويب <strong>Releases</strong> في مستودعك!
+                فور اكتمال البناء، سيتم إنشاء إصدار <strong>Release</strong> جديد وتثبيت ملف الـ APK داخله.
               </p>
+              <div className="bg-amber-950/40 border border-amber-500/30 p-2 rounded-lg text-[10px] text-amber-200 leading-relaxed">
+                <strong>⚠️ ملاحظة هامة لتفادي خطأ Exit code 1:</strong> في صفحة المستودع الجديد على GitHub، اذهب إلى:
+                <br />
+                <code className="text-white font-mono">Settings ➔ Actions ➔ General ➔ Workflow permissions</code>
+                <br />
+                واختر <strong>&quot;Read and write permissions&quot;</strong> ثم اضغط <strong>Save</strong> لتمنح الـ Action صلاحية رفع الـ Release.
+              </div>
             </div>
           </div>
 
