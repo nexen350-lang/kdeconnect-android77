@@ -33,18 +33,19 @@ export const SendFileDialog: React.FC<SendFileDialogProps> = ({
     setIsSending(true);
     setProgress(0);
 
+    let current = 0;
     const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            onSendComplete(fileName);
-            onClose();
-          }, 300);
-          return 100;
-        }
-        return prev + 15;
-      });
+      current += 15;
+      if (current >= 100) {
+        clearInterval(interval);
+        setProgress(100);
+        setTimeout(() => {
+          onSendComplete(fileName);
+          onClose();
+        }, 300);
+      } else {
+        setProgress(current);
+      }
     }, 100);
   };
 

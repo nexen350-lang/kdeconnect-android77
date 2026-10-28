@@ -65,9 +65,24 @@ export const RemoteFileBrowserView: React.FC<RemoteFileBrowserViewProps> = ({
     setCurrentPath(parent.startsWith('/storage/emulated/0') ? parent : '/storage/emulated/0');
   };
 
+  const transferIntervalRef = React.useRef<any>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (transferIntervalRef.current) {
+        clearInterval(transferIntervalRef.current);
+      }
+    };
+  }, []);
+
   const handleDownload = (file: AndroidFile) => {
-    const transfer: ActiveTransfer = {
-      id: 'dl-' + Date.now(),
+    if (transferIntervalRef.current) {
+      clearInterval(transferIntervalRef.current);
+    }
+
+    const transferId = 'dl-' + Date.now();
+    const initialTransfer: ActiveTransfer = {
+      id: transferId,
       fileName: file.name,
       totalBytes: file.sizeBytes,
       transferredBytes: 0,
@@ -76,35 +91,41 @@ export const RemoteFileBrowserView: React.FC<RemoteFileBrowserViewProps> = ({
       status: 'active'
     };
 
-    setActiveTransfer(transfer);
+    setActiveTransfer(initialTransfer);
 
     const step = Math.max(file.sizeBytes / 10, 512 * 1024);
-    const interval = setInterval(() => {
-      setActiveTransfer(prev => {
-        if (!prev || prev.status !== 'active') {
-          clearInterval(interval);
-          return prev;
-        }
+    let transferred = 0;
 
-        const next = Math.min(prev.totalBytes, prev.transferredBytes + step);
-        if (next >= prev.totalBytes) {
-          clearInterval(interval);
-          onNotify(`تم تحميل "${file.name}" وحفظه في مجلد التنزيلات بنجاح!`);
+    transferIntervalRef.current = setInterval(() => {
+      transferred += step;
+      if (transferred >= file.sizeBytes) {
+        clearInterval(transferIntervalRef.current);
+        transferIntervalRef.current = null;
 
-          // Trigger real browser download for immediate testing
-          triggerBrowserDownload(file);
+        setActiveTransfer({
+          id: transferId,
+          fileName: file.name,
+          totalBytes: file.sizeBytes,
+          transferredBytes: file.sizeBytes,
+          speed: '18.4 MB/s',
+          direction: 'download',
+          status: 'completed'
+        });
 
-          return {
-            ...prev,
-            transferredBytes: prev.totalBytes,
-            status: 'completed'
-          };
-        }
-        return {
-          ...prev,
-          transferredBytes: next
-        };
-      });
+        // Trigger real browser download for immediate testing
+        triggerBrowserDownload(file);
+        onNotify(`تم تحميل "${file.name}" وحفظه في مجلد التنزيلات بنجاح!`);
+      } else {
+        setActiveTransfer({
+          id: transferId,
+          fileName: file.name,
+          totalBytes: file.sizeBytes,
+          transferredBytes: transferred,
+          speed: '18.4 MB/s',
+          direction: 'download',
+          status: 'active'
+        });
+      }
     }, 120);
   };
 
@@ -136,6 +157,10 @@ export const RemoteFileBrowserView: React.FC<RemoteFileBrowserViewProps> = ({
     input.onchange = (e) => {
       const selected = (e.target as HTMLInputElement).files?.[0];
       if (selected) {
+        if (transferIntervalRef.current) {
+          clearInterval(transferIntervalRef.current);
+        }
+
         const newFile: AndroidFile = {
           id: 'uploaded-' + Date.now(),
           name: selected.name,
@@ -147,8 +172,9 @@ export const RemoteFileBrowserView: React.FC<RemoteFileBrowserViewProps> = ({
           mimeType: selected.type || 'application/octet-stream'
         };
 
-        const transfer: ActiveTransfer = {
-          id: 'up-' + Date.now(),
+        const transferId = 'up-' + Date.now();
+        const initialTransfer: ActiveTransfer = {
+          id: transferId,
           fileName: selected.name,
           totalBytes: selected.size,
           transferredBytes: 0,
@@ -157,32 +183,44 @@ export const RemoteFileBrowserView: React.FC<RemoteFileBrowserViewProps> = ({
           status: 'active'
         };
 
-        setActiveTransfer(transfer);
+        setActiveTransfer(initialTransfer);
 
         const step = Math.max(selected.size / 8, 256 * 1024);
-        const interval = setInterval(() => {
-          setActiveTransfer(prev => {
-            if (!prev || prev.status !== 'active') {
-              clearInterval(interval);
-              return prev;
-            }
-            const next = Math.min(prev.totalBytes, prev.transferredBytes + step);
-            if (next >= prev.totalBytes) {
-              clearInterval(interval);
-              // Add to current path files
-              setStorageTree(currentTree => ({
-                ...currentTree,
-                [currentPath]: [...(currentTree[currentPath] || []), newFile]
-              }));
-              onNotify(`تم رفع "${selected.name}" بنجاح إلى مجلد ${currentPath} في ${targetDevice.model}!`);
-              return {
-                ...prev,
-                transferredBytes: prev.totalBytes,
-                status: 'completed'
-              };
-            }
-            return { ...prev, transferredBytes: next };
-          });
+        let transferred = 0;
+
+        transferIntervalRef.current = setInterval(() => {
+          transferred += step;
+          if (transferred >= selected.size) {
+            clearInterval(transferIntervalRef.current);
+            transferIntervalRef.current = null;
+
+            setStorageTree(currentTree => ({
+              ...currentTree,
+              [currentPath]: [...(currentTree[currentPath] || []), newFile]
+            }));
+
+            setActiveTransfer({
+              id: transferId,
+              fileName: selected.name,
+              totalBytes: selected.size,
+              transferredBytes: selected.size,
+              speed: '16.8 MB/s',
+              direction: 'upload',
+              status: 'completed'
+            });
+
+            onNotify(`تم رفع "${selected.name}" بنجاح إلى مجلد ${currentPath} في ${targetDevice.model}!`);
+          } else {
+            setActiveTransfer({
+              id: transferId,
+              fileName: selected.name,
+              totalBytes: selected.size,
+              transferredBytes: transferred,
+              speed: '16.8 MB/s',
+              direction: 'upload',
+              status: 'active'
+            });
+          }
         }, 120);
       }
     };

@@ -43,11 +43,8 @@ export const SettingsDrawer: React.FC<SettingsDrawerProps> = ({
   });
 
   const togglePlugin = (key: keyof typeof plugins) => {
-    setPlugins(prev => {
-      const next = { ...prev, [key]: !prev[key] };
-      onNotify('تم تحديث إعدادات الإضافات بنجاح.');
-      return next;
-    });
+    setPlugins(prev => ({ ...prev, [key]: !prev[key] }));
+    onNotify('تم تحديث إعدادات الإضافات بنجاح.');
   };
 
   return (

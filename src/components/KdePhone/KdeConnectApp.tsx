@@ -34,11 +34,25 @@ export const KdeConnectApp: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [isPhoneFrame, setIsPhoneFrame] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimerRef = React.useRef<any>(null);
 
-  const showToast = (msg: string) => {
+  const showToast = React.useCallback((msg: string) => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
     setToastMessage(msg);
-    setTimeout(() => setToastMessage(null), 3200);
-  };
+    toastTimerRef.current = setTimeout(() => {
+      setToastMessage(null);
+    }, 3200);
+  }, []);
+
+  React.useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) {
+        clearTimeout(toastTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleSwitchDevicePerspective = () => {
     const temp = deviceA;
